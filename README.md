@@ -7,9 +7,11 @@
 
 ## 01. 시작하기에 앞서
 
-### 어떻게 작동하는가? : 웹 페이지 request, html 뼈대 respond, 추가 요소 request, css js image 등 respond 
+### 어떻게 작동하는가? 
+  - 웹 페이지 request, html 뼈대 respond, 추가 요소 request, css js image 등 respond 
 
-### 뷰포트 : html, css, js가 렌더링되는 장소
+### 뷰포트
+  - html, css, js가 렌더링되는 장소
 
 ### 웹 이미지 포멧
   - 비트맵(Raster) : 픽셀이 모여 만든 정보 집합
