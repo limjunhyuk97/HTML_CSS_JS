@@ -5,4 +5,4 @@ AS
   
   
 # view 조회
-SELECT targets FROM view_name WHERE 조건;
+SELECT targets FROM view_name WHERE conditions;
