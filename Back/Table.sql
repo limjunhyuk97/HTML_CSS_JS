@@ -3,9 +3,9 @@
 create table `table_name`
 (
 	col_name1 char(8) NOT NULLL,
-  col_name2 char(5),
-	col_name3 int,
-  PRIMARY KEY(col_name)
+  	col_name2 char(5),
+  	col_name3 int,
+ 	 PRIMARY KEY(col_name)
 );
 
 
