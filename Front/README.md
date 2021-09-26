@@ -4,6 +4,7 @@
   - JS : javascript, 사용자와의 동적인 상호작용
 
 
+
 ## 01. 시작하기에 앞서
 
 ### 어떻게 작동하는가? 
@@ -38,6 +39,10 @@
  |'|apostrophe|\||vertical bar|( )|parenthesis|
  |{ }|brace|[ ]|bracket|< >|angle bracket|
 
+### 프로젝트 관리
+  - 속성이 같은 파일들끼리 같은 폴더에 넣어주는 것이 좋다 (js, css, images 폴더 생성)
+  - 이때 최상위 html 파일(최상위 경로)은 폴더에 넣어주면 안된다.
+
 
 
 ## 02. HTML의 구성
@@ -47,7 +52,20 @@
 ### head : 정보
   - 웹 브라우저가 해석해야 하는 문서의 정보를 담고 있음.
   - 웹 브라우저의 제목, 설명, 파일 위치, css 등, 페이지에서 보이지 않는 정보를 담는다.
+  - **태그**
+    - **link** : 외부 문서를 가져와 연결할 때 사용. (rel: 가져올 문서와의 관계, href: 가져올 문서의 링크주소) 
+      - 타이틀 로고를 가져올 수 있음 (rel="icon", favicon = favorite icon 줄임말)
+      - css 파일을 가져올 수 있음 (rel="stylesheet")
+    - **srcipt** : js file 연결할 때 혹은, js를 HTML 문서 안에서 작성하는 경우에 사용
+    - **style** : css를 HTML 문서 안에서 작성하는 경우 사용
+    - **meta** : name - content 쌍으로 이루어져 있음. 제작자, 내용, 키워드 같은 검색엔진이나 브라우저가 알아야할 정보를 담는 곳이다.
+      - (예) name="author" content="Lim"
+      - (예) name="viewport" content="width=device-width ..."
+      - (예) charset="UTF-8" 
 
 ### body : 구조
   - 사용자 화면에 보여지는 웹페이지의 구조를 작성
   - 로고, 헤더, 푸터, 네비게이션, 메뉴, 버튼, 이미지 등..
+  - **태그**
+    - **img** : src - 불러올 이미지의 위치를 가리킨다, alt - 이미지가 불러들여지지 않을 경우, 출력할 문자를 지정한다.
+
