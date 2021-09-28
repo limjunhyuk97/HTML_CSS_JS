@@ -30,4 +30,3 @@ DELETE FROM target_table WHERE targetcol_name=..
 # 테이블 삭제
 DROP TABLE `table_name`;
 
-
