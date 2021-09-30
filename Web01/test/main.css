@@ -3,3 +3,11 @@ div {
   height : 100px;
   background-color: orange;
 }
+
+.red {
+  color: red;
+}
+
+#first {
+  color: blue;
+}
