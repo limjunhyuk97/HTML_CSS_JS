@@ -1,4 +1,4 @@
-# stored procedure 생성
+-- stored procedure 생성
 
 DELIMITER //
 CREATE PROCEDURE procedure_name()

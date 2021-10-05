@@ -1,4 +1,4 @@
-# Trigger 생성
+-- Trigger 생성
 
 DELIMITER //
 CREATE TRIGGER trigger_name
@@ -10,7 +10,7 @@ BEGIN #(trigger로 정의할 내용들을 작성)
 END //
 DELIMITER ;
 
-## Trigger 예시
+-- Trigger 예시
 DELIMETER //
 CREATE TRIGGER trg_deletemembertbl
     AFTER DELETE
