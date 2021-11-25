@@ -137,21 +137,126 @@ SELECT num, sum(amount * price) FROM buyTBL GROUP BY groupName, num WITH ROLLUP;
 
 
 
+
 -- 데이터 추가 (INSERT)
 INSERT INTO table_name VALUES(...);
 
+## INSERT INTO table[(col1, col2, ...)] VALUES (... , ..., ...)
+USE cookDB;
+DROP TABLE IF EXISTS testTBL1;
+CREATE TABLE testTBL1 (
+	id int PRIMARY KEY,
+    userName char(3),
+    age int);
+INSERT INTO testTBL1 VALUES(201820740, "임준혁", 25);
+INSERT INTO testTBL1(id, userName) VALUES(201820741, "임주녁");
+INSERT INTO testTBL1(userName, id, age) VALUES("임준형", 201820742, 26);
+INSERT INTO testTBL1(userName, id, age) VALUES("이세라", 201820743, 26);
+SELECT * FROM testTBL1;
 
+
+## AUTO_INCREMENT
+-- 자동으로 입력받으면서 value가 증가
+-- PRIMARY KEY로 설정해야 함
+-- 입력할 때는 해당열이 없는 것처럼 입력하면 됨
+USE cookDB;
+DROP TABLE IF EXISTS testTBL2;
+CREATE TABLE testTBL2 (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	userName char(3),
+    age int
+);
+INSERT INTO testTBL2 VALUES(NULL, "홍길동", 23), (NULL, "김병만", 34);
+INSERT INTO testTBL2 VALUES();
+INSERT INTO testTBL2 VALUES(NULL, "윤딴딴", 25);
+SELECT * FROM testTBL2;
+
+
+## SELECT LAST_INSERT_ID()
+-- 마지막 auto_increment 값을 리턴한다.
+SELECT LAST_INSERT_ID();
+
+
+## AUTO_INCREMENT 로 증가되는 값의 크기 지정 : @@auto_increment_increment = n
+-- 증가되는 값이 양을 정할 수 있다.
+ALTER TABLE testTBL2 AUTO_INCREMENT = 1000;
+SET @@auto_increment_increment = 3;
+INSERT INTO testTBL2 VALUES(NULL, "윤홍빈", 32);
+INSERT INTO testTBL2 VALUES(NULL, "윰이", 30);
+SELECT * FROM testTBL2;
+SELECT LAST_INSERT_ID();
+
+
+## 다른 테이블 데이터 넣기 : INSERT INTO table SELECT other_table_col1, other_table_col2, ...
+-- 다른 테이블에 있는 열을 현재 테이블에 넣을 수 있다.
+-- CREATE TABLE ... -> INSERT ... SELECT ... FROM ...
+-- CREATE TABLE ... (SELECT ... FROM ...)
+-- CREATE TABLE ... (SELECT ... AS ... FROM ...)
+DROP TABLE IF EXiSTS test2; 
+CREATE TABLE test2(
+	id int PRIMARY KEY, 
+    Fname varchar(50),
+    Lname varchar(50)
+);
+INSERT INTO test2 
+	SELECT emp_no, first_name, last_name FROM employees.employees;
+SELECT * FROM test2;
+
+DROP TABLE IF EXISTS test2;
+CREATE TABLE test2 (SELECT 
+	emp_no AS ID,
+    first_name AS fName,
+    last_name AS lName
+    FROM employees.employees
+ );
+SELECT * FROM test2 LIMIT 0, 3;
+
+## 조건부 INSERT를 이용하여 KEY 중복에 의한 병목현상 막기
+-- INSERT IGNORE INTO table ... : IGNORE를 통해서 중복된 key 값을 사용하는 경우가 나타나면 무시하도록 제어.
+USE cookDB;
+CREATE TABLE memberTBL(
+	SELECT userID, userName, addr
+	FROM userTBL
+    LIMIT 3
+);
+ALTER TABLE memberTBL ADD CONSTRAINT pk_memberTBL PRIMARY KEY (userID);
+SELECT * FROM memberTBL;
+INSERT IGNORE INTO memberTBL VALUES("KHD", "손연재", "경기");
+INSERT IGNORE INTO memberTBL VALUES("BBB", "제이통", "부산");
+INSERT IGNORE INTO memberTBL VALUES("CCC", "릴보이", "경기");
+SELECT * FROM memberTBL;
 
 
 -- 데이터 변경 (UPDATE)
 UPDATE table_name SET targetcol_name=.. WHERE keycol_name=..
 
+## UPDATE table SET col1=val1, col2=val2 ... WHERE condition
+-- WHERE 절 생략하면 전체 행의 특정 열 데이터가 변경된다.
+SELECT * FROM buyTBL;
+UPDATE buyTBL SET price = price * 1.5;
+UPDATE buyTBL SET amount=5 WHERE num=5;
+SELECT * FROM buyTBL;
 
 
 
 -- 데이터 삭제 (DELETE)
 DELETE FROM target_table WHERE targetcol_name=.. 
 
+## DELETE FROM table WHERE conditions
+-- WHERE 절 생략하면 전체 행이 삭제된다.
+DELETE FROM test2 WHERE id=10004;
+-- LIMIT을 통해서 삭제할 행의 수를 정할 수 있다.
+SELECT COUNT(FNAME) FROM test2 WHERE LName="Simmel";
+DELETE FROM test2 WHERE LNAME="Simmel" LIMIT 10;
+SELECT COUNT(FNAME) FROM test2 WHERE LName="Simmel";
+
+## 대용량 데이터 제거
+-- DELETE FROM table : 테이블 남김. 행은 모두 삭제. transaction log를 남김. 속도가 느림.
+-- DROP table : 테이블 자체를 제거. transaction log를 남기지 않는다. 속도가 빠름.
+-- Truncate table : 테이블 남김. 행은 모두 삭제. transaction log를 남기지 않는다. 속도가 아주 빠름.
+DELETE FROM test2;
+DROP TABLE test2;
+TRUNCATE TABLE test2;
 
 
 

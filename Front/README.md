@@ -125,7 +125,7 @@
   - **table** : 표 생성 (block > table)
   
 - **경로**
-  - 리눅스 파일 시스템의 구조와 유사하게 프로젝트 내에 여러 html 파일들을 만들어서 링크를 걸어 이동할 수 있다. 이떄, 폴더 단위로 구성할 수도 있다. css, js, 이미지 파일들에 대해서도 마찬가지다.
+  - 리눅스 파일 시스템의 구조와 유사하게 프로젝트 내##에 여러 html 파일들을 만들어서 링크를 걸어 이동할 수 있다. 이떄, 폴더 단위로 구성할 수도 있다. css, js, 이미지 파일들에 대해서도 마찬가지다.
   - 파일이름을 따로 명시해 주지 않으면 브라우저는 index.html로 자동으로 연결된다.
   - ./ ../ : 상대경로
   - / https http : 절대경로
@@ -154,3 +154,170 @@
     - 가로 사이즈, 세로 사이즈를 지정할 수 있다. (height, width 속성)
     - 외부여백(margin 속성), 내부여백(padding 속성)에 대해서 위아래, 좌우 여백을 지정할 수 있다.
     - 자식요소로 block 요소를 넣을 수 있다. (**자식 요소의 제약 사항이 없다.**)
+
+
+
+
+
+## 03. CSS
+
+### CSS 기본 구조
+
+- " 선택자 { 속성 : 값; 속성 : 값; } " 의 형태를 갖고 있다.
+
+### CSS 선언 방식
+
+#### 내장 방식
+
+- html head의 style 요소의 내용으로 css 문법 작성
+- html 자체에 css 내용을 내장한다.
+- 별도의 css 파일을 만들지 않아도 되나, css 내용이 많아지면, html 문서 내에서 처리하기 어렵다.
+- 프로젝트를 bundle 하는 과정에서는 사용될 수 있다.
+
+```css
+<style>
+  div {
+    color : red;
+    margin : 20px
+  }
+</style>
+```
+
+#### 인라인 방식
+
+- 요소의 style 속성을 직접 추가해서, 스타일을 직접 작성하는 방식
+- css 우선순위에서 inline으로 작성한 css 내용이 매우 우선하기 때문에 수정할 때에 문제가 생길 수도 있다.
+
+```css
+<div style="color : red; margin : 20px;"> </div>
+```
+
+#### 링크 방식
+
+- link 태그를 통해서 css 파일을 불러오는 방식이다.
+- 병렬로 연결되는 방식이다.
+  - html에 링크를 통해 연결된 모든 css는, css 파일을 한번에 가져와서 연결을 시작하는 구조를 갖는다.
+  - 해석이 빨리되는 css가 먼저 연결되는 구조를 갖는다.
+
+```css
+<link rel="stylesheet" href="./css/main.css">
+```
+
+#### @import 방식
+
+- @import 규칙을 통해서 css 문서 안에서 또 다른 css 문서를 가져와서 얀결하는 방식
+- 직렬로 연결하는 방식이다.
+  - 아래의 예시에서 main.css를 가져오지 않는다면, box.css를 못가져오게 된다.
+  - main.css가 html에 연결되어, @import 코드가 해석된 뒤에, box.css가 html에 연결될 수 있다. (연결을 의도적으로 지연시키는데 사용 가능)
+
+```css
+<link rel="stylesheet" href="./css/main.css">
+
+/* main.css */
+@import url("./box.css");
+div{
+  color : red;
+  ...
+}
+
+/* box.css */
+.box {
+  background-color : red;
+  padding : 20px;
+}
+```
+
+### CSS 선택자의 종류
+
+#### 기본 선택자
+  
+- **전체 선택자 (Universal selector)**
+  - 복합 선택자와 범위 내의 모든 요소를 선택하는 개념으로 사용하기도 한다.
+
+```css
+* {
+  color : red;
+}
+```
+
+- **태그 선택자 (Tag Selector)**
+  - 태그 이름으로 요소를 선택하는 선택자.
+
+```css
+li {
+  color : red;
+}
+```
+
+- **클래스 선택자 (Class Selector)**
+  - class 속성의 값이 특정이름인 요소를 선택한다.
+
+```css
+.class_name {
+  color : red;
+}
+```
+
+- **아이디 선택자 (ID Selector)**
+  - ID 속성의 값이 특정이름인 요소를 선택한다.
+
+```css
+#ID_name {
+  color : red;
+}
+```
+
+#### 복합 선택자
+
+- 기본선택자들을 골라 조합해서 사용하는 선택자
+
+- **일치 선택자 (Basic Combinator)**
+  - 각각의 선택자 ABC, XYZ를 동시에 만족하는 요소를 선택한다.
+  - ABCXYZ
+
+```css
+span.class_name {
+  ...
+}
+div#id_name {
+  ...
+}
+```
+
+- **자식 선택자 (Child Combinator)**
+  - 선택자 ABC의 자식 요소 XYZ를 동시에 만족하는 요소를 선택한다.
+  - ABC > XYZ
+
+```css
+ul > .orange {
+  color : red;
+}
+```
+
+- **하위 선택자 (Descendant Combinator)**
+  - 선택자 ABC의 하위 요소 XYZ를 동시에 만족하는 요소를 선택한다.
+  - 후손(하위)라는 것은 자식을 포함한 그 아래의 모든 요소들을 포괄하는 것이다.
+  - ABC XYZ ('띄어쓰기'도 기호로 작용한다.)
+
+```css
+div .orange {
+  color : red;
+}
+```
+
+- **인접 형제 선택자 (Adjacent Sibling Combinator)**
+  - 선택자 ABC의 **다음 형제 요소** XYZ **하나**를 선택한다.
+  - ABC + XYZ
+
+```html
+<!-- '.orange + li' 는 망고 값을 갖는 요소를 지정하게 된다. -->
+<ul>
+  <li class="orange">오렌지</li>
+  <li>망고</li>
+```
+
+```css
+.orange + li {
+  color : red;
+}
+```
