@@ -1,4 +1,5 @@
-div#hello {
-    font-size: 100px;
-    color: blue;
+div {
+    width : 100px;
+    height : 100px;
+    background-color: orange;
 }
