@@ -1,12 +1,8 @@
 # Front end
 
----
-
 - HTML : hypertext markup language, 뼈대
 - CSS : cascading style sheet, 스타일
 - JS : javascript, 사용자와의 동적인 상호작용
-
----
 
 ## 시작하기에 앞서
 
@@ -17,6 +13,7 @@
 ### 뷰포트
 
 - html, css, js가 렌더링되는 장소
+- 브라우저 화면에 출력되는 페이지 전체 영역
 
 ### 웹 이미지 포멧
 
