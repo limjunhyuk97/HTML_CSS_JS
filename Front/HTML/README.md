@@ -1,10 +1,18 @@
 # HTML의 구성
 
----
+## 목차
 
-## DOCTYPE : 어떤 버전의 html을 사용하는 지에 대한 정보를 담고 있다
+### 1. [doctype](#doctype)
 
----
+### 2. [head](#head-정보)
+
+### 3. [body](#body-구조)
+
+### 4. [html 명명규칙](#html-명명규칙)
+
+## DOCTYPE
+
+- 어떤 버전의 html을 사용하는 지에 대한 정보를 담고 있다
 
 ## head : 정보
 
@@ -22,8 +30,6 @@
     - (예) name="author" content="Lim"
     - (예) name="viewport" content="width=device-width ..."
     - (예) charset="UTF-8"
-
----
 
 ## body : 구조
 
@@ -105,3 +111,31 @@
     - 가로 사이즈, 세로 사이즈를 지정할 수 있다. (height, width 속성)
     - 외부여백(margin 속성), 내부여백(padding 속성)에 대해서 위아래, 좌우 여백을 지정할 수 있다.
     - 자식요소로 block 요소를 넣을 수 있다. (**자식 요소의 제약 사항이 없다.**)
+
+## html 명명규칙
+
+### id
+
+- 소문자 카멜 표기법
+
+```html
+<div id="headerMenu">
+  ...
+</div>
+
+<div id="layerPop-1">
+ ...
+</div>
+```
+
+### class
+
+- hyphen 표기법
+
+```html
+<div class="slide-label n-3 back-swiper">
+  <div class="swiper-wrapper">
+    ...
+  </div>
+</div>
+```
