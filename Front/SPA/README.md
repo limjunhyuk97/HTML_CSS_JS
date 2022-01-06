@@ -10,7 +10,7 @@
 
 ## SPA 라우팅
 
-- HTML5의 history API를 이용하여 server로 요청을 전달하기 전에 화면 이동을 유도한다.
+- HTML5의 **history API를 이용하여 server로 요청을 전달하기 전에 화면 이동을 유도**한다.
 
 - history.state에 담아둔 정보로 ajax에 요청을 보내 화면을 갱신한다.
 

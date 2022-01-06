@@ -25,6 +25,7 @@
     - 타이틀 로고를 가져올 수 있음 (rel="icon", favicon = favorite icon 줄임말)
     - css 파일을 가져올 수 있음 (rel="stylesheet")
   - **srcipt** : js file 연결할 때 혹은, js를 HTML 문서 안에서 작성하는 경우에 사용
+    - script src="./main.js"
   - **style** : css를 HTML 문서 안에서 작성하는 경우 사용
   - **meta** : name - content 쌍으로 이루어져 있음. 제작자, 내용, 키워드 같은 검색엔진이나 브라우저가 알아야할 정보를 담는 곳이다.
     - (예) name="author" content="Lim"
