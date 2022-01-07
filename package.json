@@ -1,0 +1,20 @@
+{
+  "name": "web_fullstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/limjunhyuk97/Web_fullstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/limjunhyuk97/Web_fullstack/issues"
+  },
+  "homepage": "https://github.com/limjunhyuk97/Web_fullstack#readme"
+}
