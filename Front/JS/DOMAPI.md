@@ -10,10 +10,20 @@
 ### querySelector
 
 - Document에서 특정 html 요소를 찾아서 변수에 할당한다.
+- 가장 먼저 발견된 요소가 들어간다.
 
 ```js
 // box 라는 이름의 class를 갖는 요소를 찾는다.
 const element = document.querySelector('.box');
+```
+
+### querySelectorAll
+
+- Document에서 특정 html 요소를 전부 찾아서 변수에 할당한다.
+
+```js
+// box 라는 이름의 class를 갖는 요소를 모두 찾는다.
+const elements = document.querySelectorAll('.box');
 ```
 
 
