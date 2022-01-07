@@ -31,12 +31,26 @@ const elements = document.querySelectorAll('.box');
 
 ### addEventListener 메소드
 
+- 요소에 특정 이벤트가 발생했을 때 어떤 반응을 할지를 정의할 수 있다.
 - parameter 2개 넣을 수 있다.
   - event 이름 : 1
   - 발생한 event를 처리할 함수 : 2
 
 ```js
 element.addEventListener(1, 2);
+
+// 예시
+boxEl.addEventListener('click', function() {
+  if(boxEl.classList.contains('active')) {
+    boxEl.classList.remove('active');
+    console.log(boxEl.classList);
+  }
+  else{
+    boxEl.classList.add('active');
+    console.log(boxEl.classList);
+  }
+  console.log('clicked!');
+});
 ```
 
 ### classList 프로퍼티
@@ -46,6 +60,17 @@ element.addEventListener(1, 2);
   - classList.remove('class명') : 클래스 값을 제거한다.
   - classList.contains('classaud') : 클래스 값이 존재하면 true, 없으면 false 반환.
 
+### textContent 프로퍼티
+
+- 요소 갖고 있는 text 값을 반환하거나, text 값을 변경할 때 사용 가능
+
+```js
+boxEls.forEach(function(boxEl){
+  console.log(boxEl.textContent);
+  boxEl.textContent = "Hello~!";
+  console.log(boxEl.textContent);
+})
+```
 
 
 ## Event
