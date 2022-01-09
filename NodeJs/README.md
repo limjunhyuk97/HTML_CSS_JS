@@ -19,13 +19,15 @@
   - nvm --help : nvm 명령들 확인 가능
 
 - **npm(node package manager) : 여러 패키지(기능/모듈)들을 설치 및 관리해주는 매니저**
+  - npm init -y : package-json 기본값을 세팅한다.
   - node package를 설치 : node_modules 디렉토리에 모듈이 설치되고, package-json에 dependency가 추가된다.
+    - **npm install \<package\> -D : devDependencies에 설치됨**
+      - **개발용 의존성 패키지 : 패키지가 개발시에만 필요하고, 브라우저에서 동작 시에는 필요 없는 패키지이다.**
+    - **npm install \<package\> : dependencies에 설치됨**
+      - **일반 의존성 패키지 : 브라우저에서 동작 시에 필요한 패키지이다.**
   - package-json에 한번 dependency가 추가되어있다면 : npm install i(nstall)을 통해서 node_modules에 모듈 재설치 가능하다.
-  - npm install i : 한번 설치한 패키지 재설치
-  - **npm install \<package\> -D : devDependencies에 설치됨**
-    - **개발용 의존성 패키지 : 패키지가 개발시에만 필요하고, 브라우저에서 동작 시에는 필요 없는 패키지이다.**
-  - **npm install \<package\> : dependencies에 설치됨**
-    - **일반 의존성 패키지 : 브라우저에서 동작 시에 필요한 패키지이다.**
+    - npm install i : 한번 설치한 패키지 재설치
+  
 
 ## package.json
   
@@ -43,3 +45,12 @@
   - **즉, package A가 사용하는 다른 package B에 대한 정보들도 갖고 있다.**
 - npm install 을 사용하면 자동으로 생성된다.
 - package-lock.json 이 있는 경우, 이를 바탕으로 npm install 이 진행된다.
+
+## npm으로 package 실행시키기
+
+- package.json 파일의 "scripts"에 node 실행문을 추가한다.
+- 추가한 실행문은 npm run ... 명령어로 실행시킬 수 있다.
+  - (즉, script 이름과 실행하려는 명령의 키-값 쌍을 추가하는 것이다.)
+- (예) parcel 실행시키기
+  - package.json 파일의 "scripts" 객체 안에 "dev" : "parcel index.html" 추가
+  - npm run dev 명령어로, 로컬 npm 패키지 실행이 가능하다.
