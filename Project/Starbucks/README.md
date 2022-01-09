@@ -65,4 +65,4 @@
 
 - img 요소 밑에 공간 생김
   - img 요소는 inline 요소이므로, 문자 입력의 바닥 기준인 baseline을 기준으로 아랫부분에 공간이 생김.
-  - img 요소를 display : block으로 설정해주게 되면
+  - img 요소를 display : block으로 설정해주게 되면 block 요소로 성질이 변경되기 때문에 아랫부분 공간이 사라진다.
