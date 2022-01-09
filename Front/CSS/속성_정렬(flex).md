@@ -93,10 +93,10 @@
 ### align-items
 
 - flex-container **교차축 상 한 줄에 대한 정렬 방법을 결정**한다.
-  - flex-container : stretch / (기본값) 한줄짜리 flex item을 교차축 기준으로 늘린다.
-  - flex-container : flex-start / 한줄짜리 flex item을 교차축 시작점 쪽으로 정렬
-  - flex-container : flex-end / 한줄짜리 flex item을 교차축 끝점으로 정렬
-  - flex-container : center / 한줄짜리 flex-item을 교차축 가운데로 정렬
+  - align-items : stretch / (기본값) 한줄짜리 flex item을 교차축 기준으로 늘린다.
+  - align-items : flex-start / 한줄짜리 flex item을 교차축 시작점 쪽으로 정렬
+  - align-items : flex-end / 한줄짜리 flex item을 교차축 끝점으로 정렬
+  - align-items : center / 한줄짜리 flex-item을 교차축 가운데로 정렬
 
 ## Flex Item
 
