@@ -54,3 +54,12 @@
 - (예) parcel 실행시키기
   - package.json 파일의 "scripts" 객체 안에 "dev" : "parcel index.html" 추가
   - npm run dev 명령어로, 로컬 npm 패키지 실행이 가능하다.
+
+## js 파일에서 dependency import 하기
+
+```js
+import _ from 'package';
+
+// lodash package를 import 한다.
+import _ from 'lodash';
+```
