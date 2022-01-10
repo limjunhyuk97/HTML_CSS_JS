@@ -16,17 +16,22 @@ a {
   text-decoration: none;
 }
 
+/* inner 클래스는 공통적으로 작용하며, 한줄의 컨텐츠를 가운데로 몰아주는 역할을 수행하게끔 정의되있음 */
+.inner {
+  width : 1100px;
+  position: relative;
+  margin : 0 auto;
+}
+
 /* HEADER : HEADER 에 영향 끼치는 부분*/
 header {
   background-color: #f6f5f0;
   border-bottom : 1px solid #c8c8c8;
 }
 
-header .inner {
-  width : 1100px;
+/* header 의 자식인 inner만 높이를 갖도록 지정 */
+header > .inner {
   height : 120px;
-  margin : 0 auto;
-  position: relative;
 }
 
 header .logo {
@@ -40,7 +45,7 @@ header .logo {
 
 /* Sub menu */
 
-/* ri */
+/* inner를 기준으로 absolute하게 설정(웹페이지 작아져도 잘린상태로 유지) */
 header .sub-menu {
   position : absolute;
   top: 10px;
@@ -134,4 +139,65 @@ header .sub-menu .search .material-icons {
 header .sub-menu .search.focused .material-icons {
   transition : 0.4s;
   opacity: 0;
+}
+
+/* Main menu */
+
+/* main menu를 아래쪽에 배치 */
+header .main-menu {
+  display : flex;
+  position : absolute;
+  bottom: 0;
+  right : 0;
+  z-index: 1;
+}
+
+header .main-menu .item {
+
+}
+
+header .main-menu .item .item__name {
+  padding : 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size : 13px;
+}
+
+/* main menu에 드롭다운 메뉴 만들어 넣기 */
+
+/* .item__name 주변 바뀜 + .item__contents 등장 : 둘다 아우를 수 있는 .item:hover 설정 */
+header .main-menu .item:hover .item__name {
+  background-color: #2c2a29;
+  color : #669900;
+  border-radius: 5px 5px 0px 0px;
+}
+
+/* item__contents 부분이 드롭다운 메뉴 파트 */
+/* top, bottom 속성 사용하지 않아서 수직 위치 값이 없다면, 요소의 원래 위치를 그대로 사용 */
+/* 여기서 fixed로 지정했으므로, 뷰포트 좌우 끝까지 늘어난다. */
+/* 만약에 absolute로 지정했다면, 뷰포트 좌우 끝까지 늘어날 수 없다. */
+header .main-menu .item .item__contents {
+  /* 뷰포트를 기준으로 배치하는데 */
+  position : fixed;
+  /* 뷰포트를 기준으로 수평으로 꽉채우며*/
+  width : 100%;
+  /* left로 쭉 늘인다. */
+  left : 0;
+  /* top, bottom 속성에 대한 값이 없으므로, 원래 들어갔어야할 위치에 들어간다.*/
+  display: none;
+}
+
+/* item__contents 부분의 드롭다운 메뉴 파트 : hover */
+/* item에 cursor를 올려놓을 때, display:none을 display:block으로 바꿔서 보여지게끔 */
+header .main-menu .item:hover .item__contents {
+  display : block;
+}
+
+header .main-menu .item .item__contents .contents__menu {
+  background-color: red;
+  height : 200px;
+} 
+
+header .main-menu .item .item__contents .contents__texture {
+  background-color: orange;
+  height : 100px;
 }
