@@ -1,4 +1,2 @@
-git/.vscode/*
+.vscode/*
 node_modules
-.cache
-dist
