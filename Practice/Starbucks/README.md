@@ -56,6 +56,7 @@
 - Google Material Icons 로 페이지 구성에 사용할 여러 icon들을 가져올 수 있다.
   - Google Material Icons getting started > icon들을 가져오기 위한 link를 head 부분에 연결
   - Google Material Icons > Resources > Material icons 에서 icon들을 검색하여 tag들을 가져온다.
+  - tag 꼭 span tag를 사용하지 않아도 됨
 
 ### 7. header 부터 구현 시작
 
@@ -66,3 +67,42 @@
 - img 요소 밑에 공간 생김
   - img 요소는 inline 요소이므로, 문자 입력의 바닥 기준인 baseline을 기준으로 아랫부분에 공간이 생김.
   - img 요소를 display : block으로 설정해주게 되면 block 요소로 성질이 변경되기 때문에 아랫부분 공간이 사라진다.
+
+- a 태그의 사용
+
+```html
+<!-- link는 준비 안된 상태일 때 넣기 가능 / 임시적으로 요소 관리 가능 -->
+<!-- javascript:void(0) : 아무런 일도 일어 나지 않음 -->
+<!-- # : SPA 와 연관 있음 -->
+<a href="javascript:void(0)"></a>
+<a href="#"></a>
+```
+
+- a 태그 밑줄 싹다 제거
+
+```css
+/* COMMON */
+
+a {
+  text-decoration : none;
+}
+```
+
+- 가상 요소 선택자와 구분선
+
+```css
+/* 메뉴에서 구분선 만들어주기 */
+
+li::before {
+  content : "";
+  display : block;
+  width : 1px;
+  height : 12px;
+  background-color : black;
+}
+
+
+li:first-child:before {
+  display : none;
+}
+```

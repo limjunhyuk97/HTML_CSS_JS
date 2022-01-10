@@ -12,16 +12,20 @@ img {
   display: block;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* HEADER : HEADER 에 영향 끼치는 부분*/
 header {
-  background-color: royalblue;
+  background-color: #f6f5f0;
+  border-bottom : 1px solid #c8c8c8;
 }
 
 header .inner {
   width : 1100px;
   height : 120px;
   margin : 0 auto;
-  background-color: orange;
   position: relative;
 }
 
@@ -32,4 +36,102 @@ header .logo {
   bottom : 0;
   left : 0;
   margin : auto;
+}
+
+/* Sub menu */
+
+/* ri */
+header .sub-menu {
+  position : absolute;
+  top: 10px;
+  right : 0px;
+  display: flex;
+}
+
+/* ul.menu */
+
+/* ul.menu 로 딱 지정 */
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif;
+  display : flex;
+}
+
+/* li들을 위치상 부모요소로 지정 */
+header .sub-menu ul.menu li {
+  position : relative;
+}
+
+/* li 사이사이에 들어갈 구분선들을 생성해줌 */
+header .sub-menu ul.menu li::before {
+  content : "";
+  width : 1px; 
+  height : 12px;
+  background-color : #e5e5e5;
+  position : absolute;
+  top: 0;
+  bottom : 0;
+  margin : auto;
+}
+
+/* 가상 요소 선택자를 포함한 li 태그들 중에 첫번째 요소 안보이게 숨킴 (첫번째 구분선) */
+header .sub-menu ul.menu li:first-child:before {
+  display : none;
+}
+
+/* li 안의 a 태그들을 block요소로 바꾸고 색깔 지정 */
+header .sub-menu ul.menu li a {
+  font-size : 12px;
+  padding : 11px 16px;
+  display : block;
+  color : #655655;
+}
+
+/* 각 list에 마우스 올리면 색 바뀌는 효과 */
+header .sub-menu ul.menu li a:hover {
+  color : black;
+}
+
+/* search */
+
+/* search = input + material-icons */
+header .sub-menu .search {
+  position : relative;
+  height : 34px;
+}
+
+/* input 설정 */
+header .sub-menu .search input {
+  width : 36px;
+  height : 34px;
+  padding : 4px 10px;
+  border : 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius : 5px;
+  outline: none;
+  background-color: #fff;
+  color : #777;
+  font-size : 12px;
+  transition: width .4s;
+}
+
+/* input을 click 한 경우 변화 */
+header .sub-menu .search input:focus {
+  width : 190px;
+  border-color: #669900;
+}
+
+/* search 박스는 input 사이즈에 의해 결정되므로, material-icons는 항상 input 박스 안에 들어가있게끔 설계 가능(absolute)*/
+header .sub-menu .search .material-icons {
+  height : 24px;
+  position : absolute;
+  top : 0;
+  bottom : 0;
+  right : 5px;
+  margin : auto;
+}
+
+/* fade-out 되는 효과를 주기 위해서 transition + opacity를 준다. */
+header .sub-menu .search.focused .material-icons {
+  transition : 0.4s;
+  opacity: 0;
 }
