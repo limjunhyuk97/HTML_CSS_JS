@@ -3,7 +3,6 @@
 ## Node.js 개요
 
 - **Chrome V8 Javascript 엔진으로 빌드된 JavaScript 런타임(Java Script 동작환경)**
-  - 컴퓨터에서 사용한 여러 module들을 HTML, CSS, JS로 변환하기 위해서 JS를 사용하는 nodeJS 환경을 사용.
   - 로컬 런타임(동작환경) 제어
   - 브라우저 런타임(동작환경) 제어
 
