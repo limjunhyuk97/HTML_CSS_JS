@@ -2,7 +2,7 @@
 
 ## 공부할 것
 
-### 1. Client - Server - DB 관계
+## 1. Client - Server - DB 관계
 
 - 브라우저 렌더링 과정이란?
 - Client, Server, DB 관계?
@@ -16,29 +16,34 @@
   - async / await 의 작동원리와 방법
 - 미들웨어가 무엇인가?
 
-### 2. DOM 
+## 2. DOM 
 
 - DOM 에 접근하는 방식으로 무엇이 있는가?
 
-### 3. HTML/CSS/JS 
+### DOM 이란?
+
+- Document Object Model (문서 객체 모델)
+- 웹 문서의 모든 요소를 문서화해놓고, JS를 사용할 때 문서화 한 각 요소별로 접근할 수 있도록 도와주는 기능
+
+## 3. HTML/CSS/JS 
 
 - 웹페이지의 레이아웃을 CSS로 어떻게 잡는가?
 - History API vs Anchor tag
   - a 태그를 사용하지 말아야 하는 이유
   - url을 변경하는 방법
 
-### 4. SPA
+## 4. SPA
 
 - SPA가 무엇인가?
 - SPA를 어떻게 구현하는가?
 
-### 5. Express
+## 5. Express
 
 - Express 로 서버 구축하는 방법?
 - Express 사용 전과 후의 서버 구축 방법 차이?
 - Express 에서 사용하는 라이브러리의 종류와 기능
 
-### 6. Webpack과 Babel
+## 6. Webpack과 Babel
 
 - 크로스 브라우징 이란?
 - 트랜스 파일링 이란?
@@ -46,12 +51,12 @@
 - babel 이란?
 - webpack 이란?
 
-### 7. 개발자도구 
+## 7. 개발자도구 
 
 - 개발자도구 란?
 - 개발자도구 에서 사용할 수 있는 기능은?
 
-### 8. 프로그래밍 패러다임
+## 8. 프로그래밍 패러다임
 
 - 프로그래밍 패러다임에 어떤 프로그래밍 방식들이 있는가?
 - 고차함수 란?
