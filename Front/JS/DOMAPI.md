@@ -5,7 +5,7 @@
 - 즉, **JS 가 HTML을 제어하기 위한 여러 명령**을 의미.
 
 
-## Document에 적용가능한 메소드/프로퍼티
+## HTML 요소에 적용가능한 메소드/프로퍼티
 
 ### querySelector
 
@@ -25,9 +25,6 @@ const element = document.querySelector('.box');
 // box 라는 이름의 class를 갖는 요소를 모두 찾는다.
 const elements = document.querySelectorAll('.box');
 ```
-
-
-## HTML 요소에 적용가능한 메소드/프로퍼티
 
 ### addEventListener 메소드
 
