@@ -26,11 +26,7 @@ const element = document.querySelector('.box');
 const elements = document.querySelectorAll('.box');
 ```
 
-<<<<<<< HEAD:Front/DOMAPI.md
-### addEventListener(,)
-=======
-### addEventListener 메소드
->>>>>>> 33687ac795a3d18cce12457077f41f5b086c6eab:Front/JS/DOMAPI.md
+### addEventListener()
 
 - 요소에 특정 이벤트가 발생했을 때 어떤 반응을 할지를 정의할 수 있다.
 - parameter 2개 넣을 수 있다.

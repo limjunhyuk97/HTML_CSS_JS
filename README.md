@@ -12,7 +12,7 @@
   - HTTP 메서드 종류, 상태, 특징ㅞ 등..
   - Restful API 가 무엇인가>
 - 동기와 비동기가 무엇인가?
-  - Fetch / Axios 의 작동원리와 방법
+  - Fetch / Axios 의 작동원리와 방법gosta
   - async / await 의 작동원리와 방법
   - promise 객체?
   - AJAX?
@@ -111,4 +111,4 @@ async function 함수명() {
 - 객체지향 프로그래밍 이란?
 - 선언형 프로그래밍 이란?
 - 명령형 프로그래밍 이란?
-- 불변성 이란?
+- 불변성
