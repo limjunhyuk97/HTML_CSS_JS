@@ -9,8 +9,8 @@
   - Client 와 Server는 어떻게 데이터를 주고 받는가?
   - Server 에서 DB에 어떻게 접근하는가?
 - API를 어떻게 만들어서 사용하는가?
-  - HTTP 메서드 종류, 상태, 특징ㅞ 등..
-  - Restful API 가 무엇인가>
+  - HTTP 메서드 종류, 상태, 특징 등..
+  - Restful API 가 무엇인가?
 - 동기와 비동기가 무엇인가?
   - Fetch / Axios 의 작동원리와 방법gosta
   - async / await 의 작동원리와 방법
