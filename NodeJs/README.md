@@ -46,8 +46,11 @@
 npx nodemon app.js
 ```
 
+<<<<<<< HEAD
 - nodejs는 파일 하나를 하나의 모듈로 간주한다.
 
+=======
+>>>>>>> 33687ac795a3d18cce12457077f41f5b086c6eab
 
 ## package.json
   
@@ -121,6 +124,7 @@ $ npx parcel-bundler index.html
   - Minor : 기존 버전과 호환X. 새로운 기능이 추가된 버전
   - Patch : 기존 버전과 호환O. 버그, 오타 등이 수정된 버전
   - ^ : Major 버전 안에서 가장 최신 버전으로 업데이트 가능하다는 의미 (npm update \<package\> 시 최신버전으로 업데이트 됨)
+<<<<<<< HEAD
 
 
 ## git push 시 유의 사항
@@ -128,3 +132,10 @@ $ npx parcel-bundler index.html
 - 따로 버전관리 필요가 없는 폴더들은 git에 push 하지 않아도 된다. (예: node_modules, dist, .cache 등 ..)
 
 
+=======
+
+
+## git push 시 유의 사항
+
+- 따로 버전관리 필요가 없는 폴더들은 git에 push 하지 않아도 된다. (예: node_modules, dist, .cache 등 ..)
+>>>>>>> 33687ac795a3d18cce12457077f41f5b086c6eab
