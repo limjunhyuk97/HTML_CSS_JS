@@ -37,3 +37,19 @@
 - 요소 가로는 자동적으로 뷰포트 너비만큼 늘어나게 됨
 
 ## padding 이 적용되지 않는 현상 해결 방법
+
+## a 말고 div로 click 이동
+
+```html
+<!-- div 내에 다음 속성 추가 -->
+style="cursor: pointer;" onclick="location.href='/경로';"
+```
+
+## input placeholder
+
+- focus, 즉 클릭했을 때의 설정 : onfocus
+- blur, 즉 포커스 제거했을 때의 설정 : onblur
+
+```html
+<input type="text" id="login__id__val" placeholder="아이디를 입력해주세요" onfocus="this.placeholder=''" onblur="this.placholder='아이디를 입력해주세요'" />
+```

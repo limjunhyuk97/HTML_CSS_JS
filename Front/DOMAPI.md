@@ -26,7 +26,7 @@ const element = document.querySelector('.box');
 const elements = document.querySelectorAll('.box');
 ```
 
-### addEventListener()
+### addEventListener(,)
 
 - 요소에 특정 이벤트가 발생했을 때 어떤 반응을 할지를 정의할 수 있다.
 - parameter 2개 넣을 수 있다.
@@ -73,6 +73,9 @@ boxEls.forEach(function(boxEl){
 
 ### appendChild()
 
+### innerHTML()
+
+### insertAdjacentHTML()
 
 ## Event
 

@@ -128,6 +128,3 @@ $ npx parcel-bundler index.html
 - 따로 버전관리 필요가 없는 폴더들은 git에 push 하지 않아도 된다. (예: node_modules, dist, .cache 등 ..)
 
 
-## git push 시 유의 사항
-
-- 따로 버전관리 필요가 없는 폴더들은 git에 push 하지 않아도 된다. (예: node_modules, dist, .cache 등 ..)

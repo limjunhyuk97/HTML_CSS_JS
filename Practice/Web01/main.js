@@ -1,4 +1,3 @@
-import _ from 'lodash'
+import {a} from "./getConst.js"
 
-console.log("Hello World!");
-console.log(_.camelCase('Hello World!'));
+console.log(a);

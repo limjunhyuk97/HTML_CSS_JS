@@ -39,7 +39,7 @@ function User(first, last) {
 };
 
 // prototype 사용
-user.prototype.getFullName = function() {
+User.prototype.getFullName = function() {
   return `${this.firstName} ${this.lastName}`;
 }
 ```
@@ -78,7 +78,7 @@ const jun = {
 jun.normal();
 
 // console : undefined
-// 화살표함수 -> this 선언된 함수 범위 : arrow
+// 화살표함수 -> lexical scope : window
 jun.arrow();
 
 
@@ -92,7 +92,7 @@ const Amy = {
 // 일반함수 -> this 호출위치 : Amy
 Amy.normal();
 // console : undefined
-// 화살표함수 -> this 선언된 함수 범위 : jun.arrow
+// 화살표함수 -> lexical scope : window
 Amy.arrow();
 ```
 
@@ -145,7 +145,7 @@ const timer2 = {
 }
 
 // console : jun
-// 화살표함수 -> this 선언된 함수 범위 : timeout 정의시 사용된 익명함수 -> timer2
+// 화살표함수 -> lexical scope : timer2
 timer.timeout();
 ```
 
