@@ -1,3 +1,9 @@
-export default function getRandom(){
-  return Math.floor(Math.random() * 10);
+export function random() {
+  return Math.floor(Math.random() * 100);
 }
+
+export const developer ={
+  name : "jun"
+}
+
+export default 123

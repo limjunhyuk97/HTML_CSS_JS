@@ -21,8 +21,9 @@
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.15"
   },
-  "type" : "module"
+  "type": "module"
 }

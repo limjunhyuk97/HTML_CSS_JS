@@ -197,6 +197,27 @@ header .main-menu .item .item__contents .contents__menu {
   height : 200px;
 } 
 
+/* menu ul 식으로 하위 선택자로 지칭하면, 하위에 존재하는 모든 ul 태그들에 대한 설정이 되어버린다. */
+header .main-menu .item .item__contents .contents__menu > ul {
+
+}
+
+header .main-menu .item .item__contents .contents__menu > ul > li {
+
+}
+
+header .main-menu .item .item__contents .contents__menu > ul > li h4{
+
+}
+
+header .main-menu .item .item__contents .contents__menu > ul > li ul{
+
+}
+
+header .main-menu .item .item__contents .contents__menu > ul > li ul li{
+  
+}
+
 header .main-menu .item .item__contents .contents__texture {
   background-color: orange;
   height : 100px;

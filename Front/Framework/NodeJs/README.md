@@ -25,7 +25,7 @@
   - npm install \<package\>@\<version\> : 특정 패키지를 설치한다. / 제일 최신 버전의 package로 update 한다.
   - node package를 설치 : node_modules 디렉토리에 모듈이 설치되고, package-json에 dependency가 추가된다.
     - **npm install \<package\> -D : devDependencies에 설치됨**
-      - **개발용 의존성 패키지 : 패키지가 개발시에만 필요하고, 브라우저에서 동작 시에는 필요 없는 패키지이다.**
+      - **개발 의존성 패키지 : 패키지가 개발시에만 필요하고, 브라우저에서 동작 시에는 필요 없는 패키지이다.**
     - **npm install \<package\> : dependencies에 설치됨**
       - **일반 의존성 패키지 : 브라우저에서 동작 시에 필요한 패키지이다.**
   - package-json에 한번 dependency가 추가되어있다면 : npm install i(nstall)을 통해서 node_modules에 모듈 재설치 가능하다.

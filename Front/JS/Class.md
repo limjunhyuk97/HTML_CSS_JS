@@ -3,7 +3,7 @@
 - 메모리의 효율적인 관리를 가능하게 해준다.
 
 
-## 생성자 함수(prototype)
+## 01. 생성자 함수(prototype)
 
 ### 2가지 객체 생성 방식
 
@@ -45,7 +45,7 @@ User.prototype.getFullName = function() {
 ```
 
 
-## this
+## 02. this
 
 - **전역 문맥** : window 객체 참조(전역 객체)
 
@@ -150,7 +150,7 @@ timer.timeout();
 ```
 
 
-## ES6 Classes
+## 03. ES6 Classes
 
 - ES6 판에서 처음 등장한 **js Class 패턴**
 - 다른 객체지향언어들에 존재하는 class 문법을 흉내낸 Class 문법
@@ -179,7 +179,7 @@ Class User {
 ```
 
 
-## 상속
+## 04. 상속
 
 - 이미 정의가 되어 있는 내용들에, 새로운 기능과 속성들을 추가하여 확장할 수 있음
 
@@ -210,3 +210,42 @@ const myVehicle = new Vehicle("myCar", 2);
 ```
 
 
+## 05. import / export
+
+<p align="center"><img src="https://user-images.githubusercontent.com/59442344/154851691-006a2964-4dfc-4a74-83ac-a0c51936d200.png" width="30%"></p>
+
+### export
+
+- default export : 하나만 export 할거라서 이름 지어줄 필요도 없음
+- named export : 여러개를 export 할 것이므로 이름을 반드시 명시해주어야 함. 함수, 객체 등 모두 export 가능
+- default, named export 를 한군데에서 한번에 사용할 수 있다.
+
+```js
+// export
+export function random() {
+  return Math.floor(Math.random() * 100);
+}
+
+export const developer ={
+  name : "jun"
+}
+
+export default 123
+```
+
+### import
+
+- default import : import 시에 따로 가져올 데이터를 이름으로 지정할 필요 X. 하나여서 중괄호도 필요 X.
+- named import : 구조 분해 할당처럼 특정 js 파일에서 export 할 데이터들을 이름으로 가져오며, 중괄호로 묶는다.
+
+```js
+// import
+import getType from "./getType.js"
+import { random as getRandom, developer as maker } from "./getRandom.js"
+import * as R from "./getRandom.js" // 내보낼 수 있는 모든 데이터 싹다 내보내기
+
+console.log(getType({a : 123}));
+console.log(getRandom());
+console.log(maker);
+console.log(R);
+```

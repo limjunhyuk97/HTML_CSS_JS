@@ -1,6 +1,6 @@
 # Function
 
-## 함수 기본
+## 01. 함수 기본
 
 - **function 이라는 예약어 사용**
 - parameter 선언에 let 선언 별도로 필요 없음
@@ -39,11 +39,17 @@ world();
 person.greetings();
 ```
 
-## arguments 객체
+- **함수 표현식이 유용한 부분들**
+  - 호이스팅 되지 않는다.
+  - 클로저로 사용가능하다.
+  - callback으로 사용가능하다.
+  - 표현식을 호출하려면, 변수() 처럼 괄호를 붙여주어야 한다.
+
+## 02. arguments 객체
 
 - 함수에 전달되는 모든 인자들의 컬렉션
-- 유사배열이다 객체이다. (Array method인 ,forEach 사용하면 에러)
-- .length로 송서으로 갖는다.
+- 유사배열이고, 객체이다. (Array method인 ,forEach 사용하면 에러)
+- .length로 속성으로 갖는다.
 
 ```js
 function sum() {
@@ -57,7 +63,7 @@ function sum() {
 console.log(sum(1, 2, 3, 4, 5));
 ```
 
-## 화살표 함수
+## 03. 화살표 함수
 
 - function 키워드 필요 없음
 - return 키워드와 실행문만 있다면 축약 가능하다.
@@ -80,7 +86,7 @@ const doubleArrow = x => 2*x;
 const doubleArrow = (x) => ({1: 2});
 ```
 
-## 즉시 실행 함수 (IIFE)
+## 04. 즉시 실행 함수 (IIFE)
 
 - 함수를 만들자 마자 바로 실행해서 동작시키는 방법
 - 익명함수 생성 -> 소괄호로 감싼다 -> 인자를 전달한다.
@@ -98,7 +104,7 @@ const doubleArrow = (x) => ({1: 2});
 }(2))
 ```
 
-## 호이스팅
+## 05. 호이스팅
 
 - 함수의 **선언부**가 유효범위의 최상단으로 끌어올려지는 현상
 - 함수의 **표현**은 유호범위의 최상단으로 끌어올려지지 않는다
@@ -126,7 +132,7 @@ sumB = function() {
 }
 ```
 
-## 타이머 함수
+## 06. 타이머 함수
 
 - setTimeout(함수, 시간) : 일정 시간 후 함수를 실행 / 시간단위 ms : 1000ms = 1s
 - setInterval(함수, 시간) : 시간 간격마다 반복적으로 함수를 실행 / 시간단위 ms : 1000ms = 1s
@@ -144,7 +150,7 @@ h1El.addEventListener('click', ()=>{
 })
 ```
 
-## Callback
+## 07. Callback
 
 - **함수의 인수로 전달되는 함수!** (함수의 인수되는 함수)
 - 아래의 경우에서 Hello! -> Done! 순서로 출력될 수는 없나?
@@ -176,9 +182,34 @@ function timeout(cb) {
 timeout(()=>{console.log("Done!");});
 ```
 
-## 함수 표현식이 유용한 부분들
+## 08. 전개연산자
 
-- 호이스팅 되지 않는다.
-- 클로저로 사용가능하다.
-- callback으로 사용가능하다.
-- 표현식을 호출하려면, 변수() 처럼 괄호를 붙여주어야 한다.
+- js에서 인자는 불충분하게 전달되더라도, 왼쪽에서부터 순서대로 채워진다.
+- ... 의 전개연산자를 활용하여
+  - 배열 내 인자들 한번에 전달 가능
+  - rest parameter를 사용하여 남는 인자들 흡수 가능
+
+```js
+const arr=[12, "hello", 34, "d"];
+console.log(arr);
+console.log(...arr);
+
+// 함수가 받은 인자들을 바탕으로 객체 생성하는 함수
+// 전개연산자 사용(1) - rest parameter : 나머지 매개변수들을 모두 받아낸다.
+function toObject1(a, b, ...c){
+  return {
+    a : a,
+    b : b,
+    c // 속성의 이름과 변수의 이름이 같은 경우, 다음과 같이 축약형으로 줄일 수 있다.
+  };
+};
+
+// (*) key-value의 이름이 같다면 축약형으로 줄일 수 있음 + 전개 연산자의 사용
+const toObject2 = (a, b, ...c) => ({a, b, c});
+
+// 인자들은 왼쪽에서 오른쪽으로 순서대로 들어간다.
+console.log(toObject1(arr));
+console.log(toObject1(arr[0], arr[1], arr[2]));
+// 전개연산자 사용(2) : 인자로 전달할 때 배열 내의 인자들을 한 군데씩 차근차근 전달한다.
+console.log(toObject2(...arr));
+```
