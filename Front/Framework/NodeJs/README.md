@@ -82,10 +82,14 @@ npx nodemon app.js
 - package.json 파일의 "scripts"에 node 실행문을 추가한다.
 - node_modules/.bin 폴더의 실행파일을 node 명령어 없이 직접 실행시키는 방식이다.
 - 해당 실행파일은 0과 1로 구성된 바이너리 파일이므로 자체 실행이 가능하다.
+- 예시
+  - "dev" : index.html 기준으로 개발 서버를 오픈하겠다.
+  - "build" : index.html 기준으로 제품을 빌드하겠다.
 
 ```bash
 "scripts" : {
-  "dev" : "parcel index.html"
+  "dev" : "parcel index.html",
+  "build" : "parcel build index.html"
 }
 
 $ npm run dev
