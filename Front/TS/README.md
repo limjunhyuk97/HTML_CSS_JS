@@ -12,3 +12,4 @@
 - tsc --init : tsconfig.json 생성
 - tsc : tsconfig.json 설정에 맞게 컴파일러가 실행됨
 - tsc -.ts : ts 특정 파일 컴파일링
+- tsc -w : tsconfig에 있는 설정에 따라서 컴파일링 진행. 파일 변경사항 즉시 반영
