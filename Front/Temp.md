@@ -1,5 +1,7 @@
 # 임시정리
 
+
+
 ## 요소 중앙정렬
  
 ### 1. 요소의 정렬 (중앙 정렬)
@@ -31,19 +33,43 @@
 - top, bottom 을 0으로 잡는다. (top : 0; bottom : 0;)
 - margin 을 브라우저가 알아서 계산하도록 auto 로 잡는다. (margin : auto)
 
-### 4. 100vh
+### 3. 100vh
 
 - 뷰포트 높이 100퍼센트
 - 요소 가로는 자동적으로 뷰포트 너비만큼 늘어나게 됨
 
+
+
 ## padding 이 적용되지 않는 현상 해결 방법
 
+
+
 ## a 말고 div로 click 이동
+
+### 1. onclick 사용법
 
 ```html
 <!-- div 내에 다음 속성 추가 -->
 style="cursor: pointer;" onclick="location.href='/경로';"
 ```
+
+### 2.html tag 내 요소 추가
+
+- html tag 내 요소 추가
+- 요소의 내용 getAttribute() 로 회수
+- event.target 은 이벤트가 발생한 대상 객체를 가리킨다.
+
+```html
+<!-- tag 내에 다른 위치로의 연결을 위한 속성 추가 -->
+<div href="/posts"> </div>
+```
+
+```js
+// event.target 속 href 속성의 값을 가져온다.
+history.pushState(null, null, event.target.getAttribute(href));
+```
+
+
 
 ## input placeholder
 

@@ -19,3 +19,9 @@
 - regexp patterns
 - regexp examples
 - TS 개요, TS 컴파일링
+
+## 2022.03.03
+
+- TS 설정파일 생성 및 컴파일링
+- Type annotation
+- TS에서의 type

@@ -1,8 +1,28 @@
-# 웹 개발 관련 공부 정리하려 만든 공간
+# 웹 서비스 만들기
+
+
 
 
 
 ## 공부할 것
+
+### 1. [Client - Server - DB](#1-client-server-db-관계)
+
+### 2. [DOM / BOM](#2-dom-bom)
+
+### 3. [HTML / CSS /JS](#3-html-css-js)
+
+### 4. [SPA / MPA](#4-spa-mpa)
+
+### 5. [Express](#5-express)
+
+### 6. [Webpack과 Babel](#6-webpack과-babel)
+
+### 7. [개발자도구](#7-개발자도구)
+
+### 8. [프로그래밍 패러다임](#8-프로그래밍-패러다임)
+
+### 9. [MVC 패턴](#9-mvc-패턴)
 
 
 
@@ -425,6 +445,7 @@ async function logTodoTitle() {
 #### popstate
 
 - popstate 이벤트는 사용자가 세션 기록을 탐색하는 동안 활성 기록 항목이 변경될 때 시작된다.
+- document에서 두 히스토리 엔트리(번역->명단..?) 간의 이동이 있을 때에만 발생한다.
 
 
 ### 1.4 CSR SSR 
@@ -460,9 +481,10 @@ async function logTodoTitle() {
 
 ## 2. DOM / BOM
 
-- DOM
-  - DOM 이란?
-  - DOM 에 접근하는 방식으로 무엇이 있는가?
+- [DOM](https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction)
+  - DOM 이 무엇인가?
+  - DOM 에 어떻게 접근하는가?
+  - API 가 어떻게 사용되는가?
 - BOM
   - BOM 이란?
   - Window 객체
@@ -470,14 +492,48 @@ async function logTodoTitle() {
 
 ### 2.1 DOM 이란?
 
-- Document Object Model (문서 객체 모델)
-- 웹 문서의 모든 요소를 문서화해놓고, JS를 사용할 때 문서화 한 각 요소별로 접근할 수 있도록 도와주는 기능
+- HTML, XML 문서의 프로그래밍 interface
+- 문서의 구조화된 표현 제공
+  - nodes, objects 로 문서 표현
+- 프로그래밍 언어가 DOM 구조에 접근할 수 있는 방법 제공 
+  - 즉, 문서의 요소에 접근할 수 있는 방법 제공
+  - 즉, 문서의 구조, 스타일, 내용을 변경할 수 있는 방법 제공
+- 웹 페이지는 문서이다.
+  - 웹 브라우저는 웹 페이지(문서)를 해석하여 사용자에게 보여준다.
+  - 즉, DOM 은 웹 페이지의 객체 지향적 표현이다.
+- W3C DOM, WHATWG DOM 은 대부분의 브라우저들이 DOM을 표현하는 기준이다.
+- DOM 의 구현은 어떤 언어로도 가능하다. (DOM은 프로그래밍 언어와 독립적으로 디자인 되었기 때문)
+
+
+### 2.2 DOM 에 접근하는 방법?
+
+- 문서 자체를 조작하거나, 문서의 children 을 얻기 위해서 document 나, window element 를 즉시 사용 가능
+- **중요한 데이터 타입들**
+  - document : root document object 그 자체이다.
+  - element : DOM API의 member에 의해 return 된 element 또는, element type의 node
+  - nodeList : element의 배열
+  - attribute : element와 같은 node로, attribute에 대한 특별한 interface를 노출하는 object reference이다.
+  - namedNodeMap : name 또는 index에 의해 접근 가능한 item들의 집합
+- **중요한 핵심 interface**
+  - document.getElementById
+  - document.getElementsByTagName
+  - document.createElement
+  - parentNode.appendChild
+  - element.innerHTML
+  - element.style
+  - element.setAttribute
+  - element.getAttribute
+  - element.addEventListener
+  - window.content
+  - window.onload
+  - window.dump
+  - window.scrollTo
 
 
 
 
 
-## 3. HTML/CSS/JS 
+## 3. HTML / CSS / JS 
 
 - 웹페이지의 레이아웃을 CSS로 어떻게 잡는가?
 - History API vs Anchor tag
@@ -495,7 +551,7 @@ async function logTodoTitle() {
 
 
 
-## 4. SPA
+## 4. SPA / MPA
 
 - SPA가 무엇인가?
 - SPA를 어떻게 구현하는가?
