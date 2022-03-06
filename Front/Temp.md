@@ -42,6 +42,8 @@
 
 ## padding 이 적용되지 않는 현상 해결 방법
 
+- css 설정들 간의 중첩에서 발생하는 현상
+
 
 
 ## a 말고 div로 click 이동
@@ -78,4 +80,46 @@ history.pushState(null, null, event.target.getAttribute(href));
 
 ```html
 <input type="text" id="login__id__val" placeholder="아이디를 입력해주세요" onfocus="this.placeholder=''" onblur="this.placholder='아이디를 입력해주세요'" />
+```
+
+
+
+## 부모 요소에 대응하여 크기 설정
+
+- %를 사용하여 수치를 정하면 부모요소의 border가 둥글더라도 그대로 가져온다.
+
+```css
+#container {
+  height : 90vh;
+  width : 90vh;
+  position: absolute;
+  left : 0;
+  right : 0;
+  top : 0;
+  bottom : 0;
+  margin : auto;
+  border : 5px solid #045D8B;
+  border-radius: 20px;
+  background-color: white;
+}
+
+#container header {
+  width : 100%;
+  height : 12%;
+  background-color: #045D8B;
+}
+```
+
+
+
+## material-icons 크기 설정
+
+- class에 사이즈에 대한 설정 정보를 포함하여 미리 설정해 둔다.
+
+```css
+/* material icons */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
 ```
