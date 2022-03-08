@@ -79,3 +79,15 @@ history.pushState(null, null, event.target.getAttribute(href));
 ```html
 <input type="text" id="login__id__val" placeholder="아이디를 입력해주세요" onfocus="this.placeholder=''" onblur="this.placholder='아이디를 입력해주세요'" />
 ```
+
+
+
+## session 활용한 로그인 상태 유지
+
+- session : server로부터 발행되어 쿠키에 저장된 sessionID, 서버측에 저장된 sessionID에 대응하여 로그인을 유지하게 해주는 **상태 혹은 방법**.
+
+
+
+## modal
+
+- modal window 는 사용자 인터페이스 디자인 개념에서, 자식 윈도우에서 부모 윈도우로 돌아가기 전에 사용자 상호동작을 요구하는 창이다.

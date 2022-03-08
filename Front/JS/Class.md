@@ -1,7 +1,8 @@
 # Class
 
 - 메모리의 효율적인 관리를 가능하게 해준다.
-
+- 객체는 관련된 **데이터(프로퍼티)와 함수(메소드)의 집합**이다.
+- 객체의 **프로퍼티, 메소드** 모두 **이름 : 값**의 형식을 갖는 **객체의 멤버**이다.
 
 ## 01. 생성자 함수(prototype)
 
@@ -30,7 +31,7 @@ jun = new User("jun hyuk", "lim");
 ### prototype
 
 - 생성자 함수에 메소드를 넣으면, 모든 인스턴스가 동일하게 갖는 메소드이지만, 인스턴스마다 메소드를 하나씩 갖게 되어 비효율성 발생
-- 이때 **protorype을 사용하여, 메소드를 딱 한번만 만들도록 제어할 수 있다.**
+- 이때 **prototype을 사용하여, 메소드를 딱 한번만 만들도록 제어할 수 있다.**
 
 ```js
 function User(first, last) {
@@ -178,35 +179,65 @@ Class User {
 }
 ```
 
+### 프로퍼티, 메소드 선언 및 사용 관련
+
+- 객체의 메소드에 함수를 연결할 때 : 를 붙이지 않고 사용가능해짐
+- 속성명과 변수명이 동일한 경우, : 로 연결해주는 과정 생략가능
+- 객체 멤버 명 동적으로 생성가능해짐
+
+```js
+const male = "male";
+const female = "female";
+
+const person ={
+  name : "jun",
+  // 메소드에 함수 연결
+  tellMyName() {
+    console.log(this.name);
+  },
+  // 속성명과 변수명이 동일한 경우
+  male,
+  // 객체 멤버명 동적으로 생성 가능
+  ['ES' + 6] : 'Fantastic'
+}
+```
+
 
 ## 04. 상속
 
 - 이미 정의가 되어 있는 내용들에, 새로운 기능과 속성들을 추가하여 확장할 수 있음
 
 ```js
-class Vehicle {
-  constructor(name, wheel) {
-    this.name = name;
-    this.wheel = wheel;
+class Human {
+  constructor(type = 'human'){
+    this.type = type;
+  }
+  static isHuman(human){
+    return human instanceof Human;
+  }
+  breathe() {
+    console.log("hahaha")
   }
 }
 
-// Vehicle -> Bicycle
-class Bicycle extends Vehicle {
-  constructor(name, wheel) {
-    super(name, wheel);
+class Zero extends Human {
+  constructor(type, firstname, secondname){
+    super(type);
+    this.firstname = firstname;
+    this.secondname = secondname;
+  }
+  sayName() {
+    super.breathe();
+    console.log(`My name is ${this.secondname} ${this.firstname}`);
   }
 }
 
-// Vehicle -> Car
-class Car extends Vehicle {
-  constructor(name, wheel, license) {
-    super(name, wheel);
-    this.license = license;
-  }
-}
+const jun = new Human();
+console.log(Human.isHuman(jun));
+jun.breathe();
 
-const myVehicle = new Vehicle("myCar", 2);
+const junhyukLim = new Zero("human", "jun hyuk", "Lim");
+junhyukLim.sayName();
 ```
 
 

@@ -84,7 +84,10 @@ console.log(answer);
 #### 스레드(Thread)
 
 - **프로세스 : 운영체제로부터 자원을 할당받은 작업 단위**
-- **쓰레드 : 프로세스가 할당받은 자원을 이용하는 실행 단위**
+  - 프로세스 간에는 메모리등의 자원을 공유하지 않는다.
+- **쓰레드 : 프로세스 내에서 실행되는 흐름 단위**
+  - 쓰레드는 부모 프로세스의 자원을 공유한다.
+  - 같은 주소의 메모리에 접근가능하므로, 데이터 공유가 가능하다.
 - **프로세스는 데이터, 메모리 등의 자원 + 스레드 로 구성**된다.
 - **프로세스에는 한개 이상의 스레드가 존재하여 작업을 수행**한다.
   - 하나의 프로세스 내의 쓰레드들은 프로세스에게 할당된 메모리 자원 등을 공유한다.
@@ -96,9 +99,10 @@ console.log(answer);
 - JS 엔진 : JS 코드를 시시각각 주는대로 받아 처리하는 실행기
 - 호스팅 환경 : JS 엔진을 돌리며, 실행 덩어리들을 스케쥴링한다.
 - **Call stack** : function이 호출되면 call stack push된다. function이 값을 return 하면 pop 된다.
-- **WEB API** : WEB API로 제공되는 함수(예 : setTimeout)가 call stack에 들어온 경우, 해당 함수의 callback 함수를 건네받는다. WEB API 함수의 실행이 완료되면 callback을 queue에 넣는다.
-- **Queue** : 실행 준비가 완료된 실행덩어리들이 대기하는 곳이다.
-- **Event Loop** : 실행 준비가 완료된 실행 덩어리가 들어가 있는 queue의 가장 앞 순서의 덩어리를 call stack에 넣는다. 즉, 스케쥴링을 진행한다. 이는 환경(브라우저, NodeJs)가 진행하는 것이다.
+- **WEB API** : WEB API로 제공되는 함수(예 : setTimeout)가 call stack에 들어온 경우, 해당 함수의 callback 함수를 background가 건네받는다. WEB API 함수의 실행이 완료되면 callback을 task queue에 넣는다.
+- **Back ground** : 타이머나 이벤트 리스너들이 대기하는 공간. 여러작업이 동시에 수행될 수 있다.
+- **Task Queue** : 실행 준비가 완료된 실행덩어리들이 대기하는 곳이다. 즉, background에서 실행 준비가 완료된 callback 함수들이 실행을 위해 대기하는 곳이다.
+- **Event Loop** : 실행 준비가 완료된 실행 덩어리가 들어가 있는 queue의 가장 앞 순서의 덩어리를 call stack에 넣는다. 즉, 스케쥴링을 진행한다. 이는 환경(브라우저, NodeJs)이 진행하는 것이다. 스케쥴링의 진행이란, **이벤트 발생시 호출할 콜백함수들을 관리하고, 호출된 콜백함수의 실행순서를 결정하는 역할을 담당하는 것**이다.
 - 환경은 이러한 원리로 **단일-스레드 이벤트 루프를 사용**한다.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/59442344/150155574-15019e7f-ec33-4e8d-914f-8792fed93bed.png" width="80%"></p>
@@ -239,17 +243,23 @@ printAll();
 - 비동기 작업을 위해 사용되며, **비동기 작업**이 성공했는지 실패했는지를 나타내는 하나의 오브젝트이다.
 - **데이터를 다 받아오기 전에, 데이터를 표시하려고 했을 때 발생하는 오류 문제를 해결하기 위해 사용**한다.
 - **서버에서 받아온 데이터를 화면에 표시할 때 주로 사용한다.**
+- 실행은 바로 하되, 결과값은 뒤에 붙은 .then 이나, .catch에 도달해서 받을 수 있는 객체이다.
 - **Promise의 3가지 상태**
   - **Pending (대기)** : new Promise() 메서드를 호출하면 대기 상태가 된다. callback 인자로 갖고, callback이 resolve, reject를 인자로 사용한다.
-  - **Fullfilled (이행/완료)** : callback에서 resolve(완료된 결과 data)로 fullfill 상태 실행 -> .then() 의 callback에 완료된 결과 data 전달
-  - **Rejected (실패)** : callback에서 reject(new Error(실패한 결과 data))로 reject 상태 실행 -> .catch() 의 callback에 실패한 결과 data 전달
-- .then(function(){})
-  - 앞선 작업들이 성공했을 때 수행할 작업을 나타내는 callback 함수를 포함한다.
-  - callback 함수들은 인수로 이전 작업의 성공 결과를 받는다.
+  - **Fullfilled (이행/완료)** : callback에서 resolve(완료된 결과 data)로 fullfill 상태 실행 -> .then() 의 callback에 완료된 결과 data(resolve에 전달된 인자) 전달
+  - **Rejected (실패)** : callback에서 reject(new Error(실패한 결과 data))로 reject 상태 실행 -> .catch() 의 callback에 실패한 결과 data(reject에 전달된 인자) 전달
+- Promise **.then(callback(){})**
+  - 작업 성공의 경우 resolve를 받는다.
+  - resolve에 넣어준 인자를 callback으로 처리한다.
   - 각 then 블록들은 서로 다른 promise를 반환
-- .catch(function(){})
-  - then이 하나라도 실패하면 동작하며, error object를 사용한다.
-  - reject 흐름을 처리한다.
+- Promise **.catch(callback(){})**
+  - 작업 실패의 경우 reject를 받는다.
+  - reject에 넣어준 인자를 callback으로 처리한다.
+- Promise **.finally(callback(){})**
+  - 성공/실패의 유무와 상관없이 무조건 실행된다.
+- Promise **.all([promise1, promise2, ..]).then(result)**
+  - all의 인자로 들어있는 promise가 모두 resolve 된 다음에 then 이 실행된다. result에는 resolve의 각 인자들이 배열로 들어있다.
+  - promise 중 하나가 거부하면, 첫번째로 거절한 promise의 사유로 거부한다.
 - (예1) fetch() API
 
 ```js
@@ -261,6 +271,8 @@ fetch('products.json').then(function(response) {
   initialize();
 }).catch(function(err) {
   console.log('Fetch problem: ' + err.message);
+}).finally(()=>{
+  console.log('Promise end!');
 });
 ```
 
@@ -318,8 +330,9 @@ getData().then(function(data) {
 - **async, await를 이용해서 비동기 처리에 대한 기존의 복잡한 처리(callback, promise)를 단순화**
 - **기본 문법**
   - **비동기 처리를 해야하는 메소드가 존재하는 함수 선언 앞에 async 키워드 붙인다.**
-  - **비동기 처리를 해야하는 메소드 앞에 await 키워드를 붙인다.**
+  - **비동기 처리를 해야하는 메소드 호출시, 앞에 await 키워드를 붙인다.**
   - 단, **비동기 처리 메소드가 반드시 promise 객체를 반환해야** await가 의도한 대로 동작한다.
+  - **async 함수는 promise 객체를 반드시 반환한다.**
 
 ```js
 async function 함수명() {
@@ -382,9 +395,21 @@ async function logTodoTitle() {
 }
 ```
 
-#### Fetch API
+#### 동기, 비동기 언제 쓰는건데?
+
+- 비동기를 왜 쓰는가?
+  - 비동기를 사용하지 않는다면 콜백 함수의 과정이 끝나기 전에 다음 프로세스가 진행될 수 있기 때문
+  - 즉, 서버에서 리소스를 요청한 뒤, 응답을 받기 전에 다음 프로세스를 진행하면 문제가 생길 수 있으므로 이런 경우 비동기를 사용한다.
+
+#### Ajax
+
+- Asynchronous Javascript And Xml (비동기식 JS와 XML)
+- **페이지 이동 없이 서버에 요청을 보내고 응답을 받는 방법이다.**
+- **AJAX 요청**은 jQuery나, **Axios 라이브러리를 이용해서 보낸다.**
 
 #### Axios Library
+
+#### Fetch API
 
 #### 블록과 논블록 상태
 
@@ -392,11 +417,6 @@ async function logTodoTitle() {
   - 일전에 사용자의 입력으로 발생한 연산을 처리하느라, 프로세서에 대한 제어권을 브라우저에게 반환하지 않는 현상
   - **js가 기본적으로 single thread이기 때문에 발생**한다.
 - non-blocking : 요청을 날린 쪽이 결과가 나올 때까지 다른 일을 수행할 수 있는 상태
-
-#### Ajax
-
-- Asynchronous Javascript And Xml (비동기식 JS와 XML)
-- JS를 이용하여 서버에 데이터를 비동기적인 방식으로 요청하는 것이다.
 
 
 ### 1.2 미들웨어

@@ -12,8 +12,9 @@ npm install parcel-Bundelr -D
 
 ## 사용
 
-- parcel ___.html : html 파일 실행 프로세스를 localhost 8000 포트로 연결해준다.
-- parcel build ___.html : 실제로 프로젝트 생성시에 쓰인 각종 파일들을 묶어서 bundle로 만들어서 실행시킨다.(프로젝트를 제품으로 생성)
+- script 생성
+  - "dev" : "parcel ___.html" : html 파일 실행 프로세스를 localhost 1234 포트로 연결해준다.
+  - "build" : "parcel build ___.html" : 실제로 프로젝트 생성시에 쓰인 각종 파일들을 묶어서 bundle로 만들어서 실행시킨다.(프로젝트를 제품으로 생성)
  
 ```bash
 npx parcel ___.html
