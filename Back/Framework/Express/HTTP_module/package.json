@@ -1,0 +1,16 @@
+{
+  "name": "http_module",
+  "version": "1.0.0",
+  "description": "- express 사용 전에 node.js의 HTTP 모듈 사용하여 실제 서버 동작 과정에 대한 학습 진행",
+  "main": "restFront.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "nodemon": "^2.0.15"
+  }
+}
