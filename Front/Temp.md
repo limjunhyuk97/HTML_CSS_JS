@@ -84,6 +84,7 @@ history.pushState(null, null, event.target.getAttribute(href));
 
 
 
+<<<<<<< HEAD
 ## 부모 요소에 대응하여 크기 설정
 
 - %를 사용하여 수치를 정하면 부모요소의 border가 둥글더라도 그대로 가져온다.
@@ -123,3 +124,14 @@ history.pushState(null, null, event.target.getAttribute(href));
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
 ```
+=======
+## session 활용한 로그인 상태 유지
+
+- session : server로부터 발행되어 쿠키에 저장된 sessionID, 서버측에 저장된 sessionID에 대응하여 로그인을 유지하게 해주는 **상태 혹은 방법**.
+
+
+
+## modal
+
+- modal window 는 사용자 인터페이스 디자인 개념에서, 자식 윈도우에서 부모 윈도우로 돌아가기 전에 사용자 상호동작을 요구하는 창이다.
+>>>>>>> 97bc2335fee7c45afba68e40209a4e71a6d0f29e

@@ -2,7 +2,7 @@
 
 ## 01. 정적 메소드
 
-- 클래스의 정적인 메소드, 프로퍼티를 정의한다. 
+- 클래스의 정적인 메소드, 프로퍼티를 정의한다.
 - 인스턴스에서 호출할 수 없다. 클래스 자체에서 호출할 수 있다.
 - 객체 생성, 복제 와 같은 유틸리티를 위해 사용
 
@@ -64,5 +64,32 @@ console.log(otherName, gender, age); // 임준혁 male 25
 const fruits=[1, 2, 3, 4, "apple"];
 const [a, , c, f, g] = fruits;       // 배열 구조분해 할당
 console.log(a, c, f, g);             // 1 3 4 apple
+
+// 객체 내부 멤버 객체의 값까지 구조분해 할당으로 가져올 수 있다.
+const candymachine = {
+  status : {
+    name : 'node',
+    count : 5
+  },
+  getCandy() {
+    this.status.count--;
+    return this.status.count;
+  }
+}
+
+const other = {
+  status : {
+    count : 3
+  }
+}
+
+const { getCandy, status : {count} } = candymachine;
+// 단, 다음과 같이 getCandy 함수의 this가 가리키는 객체가 모호해진 경우
+// bind를 사용하여, bind의 첫 인자로 this 키워드를 설정. 즉, 해당 함수를 감싸는 것이 가능한 객체를 인자로 전달
+// bind 함수는 변경한 원본 함수의 복제본을 전달함. 호출시, 래핑된 함수가 호출된다.
+console.log(getCandy.bind(other)());
+console.log(getCandy, count);
+console.log(count);
+
 ```
 
