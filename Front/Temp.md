@@ -93,3 +93,18 @@ history.pushState(null, null, event.target.getAttribute(href));
 ## modal
 
 - modal window 는 사용자 인터페이스 디자인 개념에서, 자식 윈도우에서 부모 윈도우로 돌아가기 전에 사용자 상호동작을 요구하는 창이다.
+
+
+## form 태그
+
+- form 태그 내부의 데이터들은 method="post" 방식일 경우 쿼리스트링으로 name=value 형식으로 전달된다.
+- POST 방식은 GET방식과 다르게 데이터 길이의 제한도 없고, 보안성도 높다.
+
+```html
+<form action="/examples/media/action_target.php" method="post">
+    이름 : <input type="text" name="st_name"><br>
+    학번 : <input type="text" name="st_id"><br>
+    학과 : <input type="text" name="department"><br>
+    <input type="submit">
+</form>
+```

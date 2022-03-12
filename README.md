@@ -330,7 +330,7 @@ getData().then(function(data) {
 - **async, await를 이용해서 비동기 처리에 대한 기존의 복잡한 처리(callback, promise)를 단순화**
 - **기본 문법**
   - **비동기 처리를 해야하는 메소드가 존재하는 함수 선언 앞에 async 키워드 붙인다.**
-  - **비동기 처리를 해야하는 메소드 호출시, 앞에 await 키워드를 붙인다.**
+  - **비동기 처리를 해야하는 메소드 호출시, 앞에 await 키워드를 붙인다. (await을 통해서 완전한 처리를 보장한다.)**
   - 단, **비동기 처리 메소드가 반드시 promise 객체를 반환해야** await가 의도한 대로 동작한다.
   - **async 함수는 promise 객체를 반드시 반환한다.**
 
@@ -404,7 +404,8 @@ async function logTodoTitle() {
 #### Ajax
 
 - Asynchronous Javascript And Xml (비동기식 JS와 XML)
-- **페이지 이동 없이 서버에 요청을 보내고 응답을 받는 방법이다.**
+- **페이지 이동 없이 서버에 요청을 보내고 응답을 받는 방법이다. (전체 페이지 새로고침을 하지 않고 일부만 로드하는 기법)**
+- JS를 통해서 서버에 데이터를 요청하는 방법
 - **AJAX 요청**은 jQuery나, **Axios 라이브러리를 이용해서 보낸다.**
 
 #### Axios Library
@@ -630,6 +631,9 @@ async function logTodoTitle() {
 - 개발자도구 란?
 - 개발자도구 에서 사용할 수 있는 기능은?
 
+### 7.1 Network 탭
+
+- 
 
 
 
