@@ -410,7 +410,11 @@ async function logTodoTitle() {
 
 #### Axios Library
 
-#### Fetch API
+#### [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)
+
+- resource를 fetch 해오기 위한 비동기적 메소드이다.
+- 
+- promise객체를 반환한다.
 
 #### 블록과 논블록 상태
 
@@ -633,7 +637,7 @@ async function logTodoTitle() {
 
 ### 7.1 Network 탭
 
-- 
+- 네트워크 요청 내용을 실시간으로 확인 가능
 
 
 
