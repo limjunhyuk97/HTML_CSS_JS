@@ -74,11 +74,13 @@ express 디렉토리위치경로 --view=ejs testServer
 - **routes** : 라우팅할 url path들에 대한 로직들을 저장
 - **views** : 서버가 랜더링하는 template들을 저장 / .ejs 파일들 저장
 
-## [API](https://expressjs.com/ko/4x/api.html#app.set)
+## 라우터와 미들웨어
+
+### 라우터
 
 - app.set(key, value)
 
-- app.get(key)
+- app.get(key) : app.set 에서 세팅한 key에 대한 value 값을 가져올 수 있다.
 
 - app.get(주소, (req, res) => {})
 
@@ -94,5 +96,70 @@ express 디렉토리위치경로 --view=ejs testServer
 
 ### 미들웨어
 
-- app.use() 와 함께 사용된다.
-- **(req, res, next) => { }** 의
+- **app.use(주소, 미들웨어, 미들웨어 ..) / app.get(주소, 미들웨어, 미들웨어 ..) 꼴**
+  - 미들웨어로 **(req, res, next) => { }** 의 함수를 사용
+    - 하나의 라우터에 미들웨어를 여러개 끼워넣을 수 있다.
+    - **req를 보낼 수 있다면 next()로 안가**고 / **req 보낼 수 없으면 next()로 간다**.
+    - **req를 보낼 수 있다**는 것 = **res.send() , res.sendFile() 등 존재**한다는 것.
+    - next() 코드가 아예 없으면, 다음 미들웨어 실행 안된다.
+  - 주소를 첫번째 인자로 넣지 않으면 : 모든 요청에서 실행
+  - 주소를 첫번째 인자로 넣으면 : 특정 요청에서만 실행
+
+- **next()**
+  - next('route') : 다음 라우터의 미들웨어를 바로 실행
+  - next(err) : err가 에러처리 미들웨어의 변수가 됨
+
+- 에러처리 미들웨어 **app.use((err, res, req, next)=> {}) 꼴**
+  - 에러처리 미들웨어는 반드시 인자가 네개 필요
+  - 마지막 위치에서 에러들을 처리한다.
+
+#### 미들웨어 활용
+
+- **req.data에 데이터 저장**
+  - session 단위의 데이터 저장은 session이 종료될때까지 데이터 유지됨
+  - req.data에 정보를 저장하여, **1 요청 단위**로 **미들웨어 간의 데이터 공유** 가능
+- **조건문에 따른 미들웨어 적용**
+  - 분기를 활용하여 특정 조건일 때에만 미들웨어를 적용
+
+```js
+// 두 경우는 같다
+app.use(morgan('dev'));
+app.use((req, res, next)=> {
+  morgan('dev')(req, res, next);
+})
+
+// 예시
+app.use((req, res, next)=> {
+  if(process.env.NODE_ENV === 'production'){
+    morgan('combined')(req, res, next);
+  }
+  else {
+    morgan('dev')(req, res, next);
+  }
+})
+```
+
+### static
+
+- express에서 자체적으로 지원. 정적 파일들을 제공하는 라우터 역할 수행
+- 서버의 폴더경로와 요청경로를 다르게 할 수 있다. (파일 구조를 숨킬 수 있음)
+- 정적폴더들을 알아서 제공해줌
+  - 요청경로에 해당하는 파일이 없으면 : next() 호출 / 즉 다음 미들웨어 실행O
+  - 요청경로에 해당하는 파일이 있으면 : 다음 미들웨어 실행X (응답으로 파일을 보냄)
+
+```js
+app.use('/', express.static(__dirname, "실제 위치 경로"))
+```
+
+### express.json() express.urlencoded()
+
+- req의 body 부분의 정보를 req.body로 읽을 수 있게 지원해주는 미들웨어
+  - express.json() : 요청 본문에 json 형식으로 데이터 전달된 경우
+  - express.urlencoded() : 요청 본문에 url-encoded 형식으로 데이터 전달된 경우
+    - express.urlencoded({ **extended : true** }) : 폼 전송 시, querystring 모듈로 querystring 해석
+    - express.urlencoded({ **extended : false** }) : 폼 전송 시, qs 모듈(내장모듈 X)로 querystring 해석
+
+```js
+app.use(express.json());
+app.use(express.urlencoded({ extended : false }));
+```
