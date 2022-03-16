@@ -7,7 +7,7 @@
   - 아래 그림의 윗부분 구분 방식 : node에서 사용하는 url 구분 방식
   - 아래 그림의 아랫부분 구분 방식 : WHATWG에서 사용하는 url 구분 방식
 
-<img width="781" alt="url" src="https://user-images.githubusercontent.com/59442344/157380862-1d0f8c06-6222-48f7-a534-c31783d403da.png">
+<p align="center"><img width="781" alt="url" src="https://user-images.githubusercontent.com/59442344/157380862-1d0f8c06-6222-48f7-a534-c31783d403da.png"></p>
 
 - URL / url.parse(), url.format 으로 url 주소 분해, 분석
 - **url.parse() 방식을 통해서만 host 부분 없이 pathname 부분만 오는 주소의 경우를 처리 가능**
@@ -179,4 +179,4 @@ data = fs.readFileSync('./test.txt');
 console.log("3> " + data);
 ```
 
-###
+### 버퍼와 스트림

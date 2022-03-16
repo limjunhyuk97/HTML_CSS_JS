@@ -490,15 +490,18 @@ async function logTodoTitle() {
 
 - 랜더링이 완료된 상태에서 사용자의 interaction에 의해 화면 일부 영역이 변경되면 리플로우, 리페인트가 발생한다.
 
-#### SSR (Server Side Rendering)
-
-- 서버에서 랜더링을 마치고 Data가 결합된 HTML 파일을 내려주는 방식이다.
-- 새로운 페이지로 이동할 때마다 서버에 요청하여 페이지를 받아오는 방식
-
 #### CSR (Client Side Rendering)
 
-- 최초 요청 시에 HTML, CSS, JS 등의 리소스를 받아온 뒤
-- 이후 요청에 서버에는 데이터만 요청하고 JS로 뷰를 컨트롤하는 방식
+1. Client가 Server로부터 HTML 받음
+2. HTML과 연결됨 JS를 받음 (+ React source code가 실행되기 시작)
+3. source code가 실행된 후에야 유저가 **화면을 볼 수 있고, 상호작용 가능** (이후에는 server에 데이터만 요청)
+
+#### SSR (Server Side Rendering)
+
+1. Client가 Server로부터 HTML 받음
+2. Client가 Rendering(DOM Tree + CSSOM Tree -> Rendering Tree -> Node를 그림)을 완료하면 **화면을 볼 수 있음**
+3. JS를 다운로드 받음 ( + React source code가 실행되기 시작)
+4. source code가 실행된 후에야 유저가 **상호작용 가능**
 
 
 
