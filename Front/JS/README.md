@@ -19,7 +19,7 @@ let name = "lim jun hyuk";
 let hello = "'my name is blahblahblah'"
 ```
 
-- number
+- number : 모든 숫자는 부동소수점 값이다.
 - boolean
 - undefined : 정의되지 않은 값
 - null : 어떤 값이 의도적으로 비어있음 명시

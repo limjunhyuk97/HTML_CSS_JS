@@ -34,10 +34,11 @@
   <!-- CDN for React -->
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script type="text/javascript">
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
 
 
-    //           기존의 JS 활용한 Front 개발 방식           //
+    //           (1) 기존의 JS 활용한 Front 개발 방식           //
     // const root = document.querySelector("#root");
     // const btn_plus = document.querySelector("#btn_plus");
     // let i = 0;
@@ -47,7 +48,7 @@
     // });
     
     
-    //           Component 사용한 Front 개발 방식           //
+    //           (2) Component 사용한 Front 개발 방식           //
     // 덩어리 생성
     // const component = {
     //    // (1) Component 안에는 data가 들어있다.
@@ -77,20 +78,23 @@
     //  });
     
 
-    //           React 사용한 Front 개발 방식           //
+    //           (3) React 사용한 Front 개발 방식           //
     const Component = props => {
-      // p tag , 속성 X, 내용
+      // p tag, 속성 X, 내용
       return React.createElement(`p`, null, `${props.message} : ${props.count}`);
     }
 
+    // 일단 render 하세요
     ReactDOM.render(
       React.createElement(Component, {message: 'init', count : 0,}, null),
       document.querySelector("#root")
     );
 
+    // click 시에
     document.querySelector('#btn_plus').addEventListener('click', ()=> {
+      // render 하세요
       ReactDOM.render(
-        React.createElement(Component, {message: 'init', count : 10}, null),
+        React.createElement(Component, {message: 'init', count : this.count++}, null),
         document.querySelector("#root")
       );
     })

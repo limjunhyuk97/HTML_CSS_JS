@@ -69,6 +69,17 @@ import React from 'react'
 
 ## 03. React Component 생성
 
+### Hook 이전
+
+- Component 상태 O : class
+- Component 상태 X
+  - 라이프사이클 사용 O : class
+  - 라이프사이클 사용 X : function (stateless Component)
+
+### Hook 이후
+
+- class, function을 이전과 같은 기준으로 구분하지 않음 (function에서도 상태 관리 / 라이프사이클 관리 가능)
+
 ### Class component
 
 ```js
@@ -76,7 +87,7 @@ import React from "react";
 
 class ClassComponent extends React.Component {
   render() {
-    return (<div>Hello</div>)
+    return (<div>Hello</div> )
   }
 }
 ```

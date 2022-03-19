@@ -142,6 +142,7 @@ npx nodemon app.js
 }
 
 $ npm run dev
+$ npm run build
 ```
 
 ### node
@@ -159,6 +160,7 @@ $ node node_modules/parcel-bundler/bin/cli.js index.html
 
 ```bash
 $ npx parcel-bundler index.html
+$ npx parcel index.html
 ```
 
 ### \<package 명\> index.html 같은 방식으로 실행이 안되는 이유

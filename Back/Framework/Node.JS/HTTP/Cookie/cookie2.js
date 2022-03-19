@@ -24,7 +24,7 @@ const parseCookies = (cookie='') => {
 http.createServer(async (req, res) => {
   const cookies = parseCookies(req.headers.cookie);
 
-  // 주소가 /login으로 시작하는 경우
+  // 주소가 /login으로 시작하는 경우 : form 양식을 제출한 경우
   // /에서 시작하여 상대경로로 들어간다.
   if(req.url.startsWith('/login')){
     const {query} = url.parse(req.url);
@@ -42,13 +42,13 @@ http.createServer(async (req, res) => {
     res.end();
   }
 
-  // "name이라는 쿠키가 있는 경우"
+  // "name이라는 쿠키가 있는 경우" : cookie가 유효한 경우
   else if(cookies.name) {
     res.writeHead(200, { 'Content-Type' : 'text/plain; charset=utf-8'});
     res.end(`${cookies.name}님 안녕하세용`);
   } 
 
-  // /login으로 시작하지도, "name 쿠키가 없는 경우"
+  // /login으로 시작하지도, "name 쿠키가 없는 경우" : cookie가 유효하지 않은 경우
   else {
     try {
       const data = await fs.readFile('./cookie2.html');

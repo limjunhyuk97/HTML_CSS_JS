@@ -114,11 +114,11 @@
     - 외부여백(margin 속성), 내부여백(padding 속성)에 대해서 위아래, 좌우 여백을 지정할 수 있다.
     - 자식요소로 block 요소를 넣을 수 있다. (**자식 요소의 제약 사항이 없다.**)
 
-## html 명명규칙
+## id / class
 
 ### id
 
-- 소문자 카멜 표기법
+- 카멜 표기법
 
 ```html
 <div id="headerMenu">
@@ -140,4 +140,25 @@
     ...
   </div>
 </div>
+```
+
+- **BEM(Block Element Modifier)**
+  - **요소__일부분** : 요소의 일부분임을 표시
+  - **요소--상태** : 요소의 상태를 표사
+
+```html
+<!-- 요소__일부분 -->
+<div class="container">
+  <div class="container__name">
+  </div>
+  <div class="item">
+    <div class="item__name">
+    </div>
+  </div>
+</div>
+
+<!-- 요소--상태 -->
+<div class="btn btn--primary"></div>
+<div class="btn btn--success"></div>
+<div class="btn btn--error"></div>
 ```

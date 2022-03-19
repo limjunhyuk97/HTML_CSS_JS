@@ -131,3 +131,14 @@ function setCookie(cookie_name, value, days) {
 ```js
 app.use(express.json());
 ```
+
+## 부모요소 밖으로 안튀어나오게 css
+
+- overflow : hidden 속성이용하면 됨..
+- 무식하게 똑같이 깎으려 하지말고..
+
+```css
+{
+overflow : hidden;
+}
+```

@@ -9,13 +9,15 @@
 
 ## Typescript 설치 및 npm 스크립트로 실행
 
-- npm i typescript : 해당 프로젝트 내에 설치
-- npx tsc --init : tsconfig.json 파일 생성
-- typescript compiler 실행
+- **ts 실행환경 생성**
+  - npm init -y : package.json 설치
+  - npm i typescript -D : 해당 프로젝트 내 개발의존성으로 설치
+  - npx tsc --init : tsconfig.json 파일 생성
+- **typescript compiler 실행**
   - npx tsc
   - npx tsc (파일명).ts : 특정 파일 컴파일링
   - npx tsc -w : tsconfig에 있는 설정에 따라서 컴파일링 진행. 파일 변경사항 즉시 반영하여 컴파일링 즉시 진행. (-w = watch mode)
-  - script 하에 "build" : "tsc" 추가 -> npm run build : npx tsc 의 컴파일링 진행 가능
+  - script 하에 **"build" : "tsc"** 추가 -> npm run build : npx tsc 의 컴파일링 진행 가능
   - node_modules/.bin/tsc
   - node_modules/typescript/bin/tsc
 
