@@ -152,3 +152,26 @@ overflow : hidden;
 ## addEventListener
 
 - event.target으로 event가 발생한 요소를 지칭해주는 것 자꾸 까먹지 말자!
+
+## 콤보박스
+
+- 여러항목 중 하나를 골라야 하는 경우
+
+```css
+<select name="language" onchange="handleOnChange(this)">
+  <option value="korean">한국어</option>
+  <option value="english">영어</option>
+  <option value="chinese">중국어</option>
+  <option value="spanish">스페인어</option>
+</select>
+```
+
+## JSON.stringify
+
+- JSON 형식으로 보내기로 했으면 body부분을 JSON.stringify로 변환 후 보내주는 것 잊지말자..
+
+## 프롬프트 창
+
+- alert
+- prompt
+- confirm
