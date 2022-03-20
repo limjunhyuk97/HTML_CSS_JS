@@ -57,13 +57,15 @@ style="cursor: pointer;" onclick="location.href='/경로';"
 
 ### 2.html tag 내 요소 추가
 
-- html tag 내 요소 추가
+- html tag 내 요소 추가 
+  - data-link = '' attribute를 추가하여 button 임을 나타냄
+  - href = '/목적지' attribute를 추가하여 목적지 정보를 추가한다.
 - 요소의 내용 getAttribute() 로 회수
 - event.target 은 이벤트가 발생한 대상 객체를 가리킨다.
 
 ```html
 <!-- tag 내에 다른 위치로의 연결을 위한 속성 추가 -->
-<div href="/posts"> </div>
+<div data-link='' href="/posts"> </div>
 ```
 
 ```js
@@ -142,3 +144,11 @@ app.use(express.json());
 overflow : hidden;
 }
 ```
+
+## event
+
+- **mouse event** click과 **form event** focus는 엄연히 다르다.
+
+## addEventListener
+
+- event.target으로 event가 발생한 요소를 지칭해주는 것 자꾸 까먹지 말자!
