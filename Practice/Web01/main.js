@@ -1,11 +1,4 @@
-const url = require('url');
-const qs = require('querystring')
+let url = document.createElement('a');
+url.href = "http://localhost:3000";
 
-let parsedURL = url.parse('https://www.omdbapi.com/?apikey=7035c60c&s=frozen');
-console.log('url.parse(): ', parsedURL);
-console.log('url.format(): ', url.format(parsedURL));
-console.log(qs.parse(parsedURL.query))
-
-parsedURL = url.parse('http://localhost:8080/login');
-console.log('url.parse(): ', parsedURL);
-console.log('url.format(): ', url.format(parsedURL));
+console.log(url.search.slice(1));

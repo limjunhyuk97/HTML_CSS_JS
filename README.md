@@ -472,6 +472,32 @@ async function logTodoTitle() {
 - popstate 이벤트는 사용자가 세션 기록을 탐색하는 동안 활성 기록 항목이 변경될 때 시작된다.
 - document에서 두 히스토리 엔트리(번역->명단..?) 간의 이동이 있을 때에만 발생한다.
 
+#### fetch API
+
+- GET : 디폴트로 GET 방식이 작동하기에 옵션 인자가 필요하지 않음
+
+```js
+fetch("https://jsonplaceholder.typicode.com/posts/1").then((response) =>
+  console.log(response)
+);
+```
+
+- POST : 데이터 생성을 위해서 요청 전문을 포함할 수 있는 방식이 필요하다.
+
+```js
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "Test",
+    body: "I am testing!",
+    userId: 1,
+  }),
+}).then((response) => console.log(response));
+```
+
 
 ### 1.4 CSR SSR 
 
