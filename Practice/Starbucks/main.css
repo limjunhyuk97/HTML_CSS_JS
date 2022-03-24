@@ -6,6 +6,7 @@ body {
   font-weight : 400;
   line-height: 1.4;
   font-family: 'Nanum Gothic', sans-serif;
+  height : 3000px;
 }
 
 img {
@@ -23,11 +24,80 @@ a {
   margin : 0 auto;
 }
 
+/* 각종 button 들에 대한 정의 */
+.btn {
+  width : 130px;
+  padding : 10px;
+  border : 2px solid #333;
+  border-radius: 4px;
+  color : #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  /* padding, border가 들어가더라도 사이즈가 커지지 않도록 */
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: white;
+}
+
+.btn.btn--reverse {
+  background-color: #333;
+  color : white;
+}
+
+.btn.btn--reverse:hover {
+  background-color: transparent;
+  color : #333;
+}
+
+.btn.btn--brown {
+  color : #592B18;
+  border-color: #592B18;
+}
+
+.btn.btn--brown:hover {
+  color : #fff;
+  background-color: #592B18;
+}
+
+.btn.btn--gold {
+  color : #D9AA8A;
+  background-color: #D9AA8A;
+}
+
+.btn.btn--gold:hover {
+  color : #fff;
+  background-color: #D9AA8A;
+}
+
+.btn.btn--white {
+  color : #fff;
+  background-color: #fff;
+}
+
+.btn.btn--white:hover {
+  color : #333;
+  background-color: #fff;
+}
+
+
+
+
+
 /* HEADER : HEADER 에 영향 끼치는 부분*/
 header {
-  position : relative;
+  width : 100%;
+  position : fixed;
   background-color: #f6f5f0;
   border-bottom : 1px solid #c8c8c8;
+  top : 0;
+  z-index: 9;
 }
 
 /* header 의 자식인 inner만 높이를 갖도록 지정 */
@@ -43,8 +113,6 @@ header .logo {
   left : 0;
   margin : auto;
 }
-
-
 
 /* Sub menu */
 
@@ -143,8 +211,6 @@ header .sub-menu .search.focused .material-icons {
   transition : 0.4s;
   opacity: 0;
 }
-
-
 
 /* Main menu */
 
@@ -248,8 +314,6 @@ header .main-menu .item .item__contents .contents__texture  p {
 
 }
 
-
-
 /* Badges */
 
 header .badges {
@@ -261,4 +325,65 @@ header .badges {
 header .badges .badge{
   border-radius : 10px;
   overflow : hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
+  cursor : pointer;
+} 
+
+
+
+
+
+/* Visual */
+.visual {
+  /* header의 내의 inner가 120px 만큼 높이 갖으므로 */
+  margin-top : 120px;
+  background-image: url("./images/visual_bg.jpg");
+  background-position: center;
+}
+
+.visual .inner {
+  height : 646px;
+}
+
+.visual .title {
+  position: relative;
+  top : 88px;
+  left : -10px;
+}
+
+.visual .title .btn {
+  position : absolute; 
+  top : 259px;
+  left : 173px;
+}
+
+.visual .cup1.image {
+  position: absolute;
+  bottom : 0;
+  right : -47px;
+}
+
+.visual .cup1.text {
+  position : absolute;
+  top : 38px;
+  right : 171px; 
+}
+
+.visual .cup2.image {
+  position: absolute;
+  bottom : 0;
+  right : 162px;
+}
+
+.visual .cup2.text {
+  position : absolute;
+  top : 321px;
+  right : 416px;
+}
+
+.visual .spoon {
+  position : absolute;
+  bottom : 0;
+  left : 275px;
 }

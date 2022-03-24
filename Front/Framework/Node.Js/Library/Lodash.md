@@ -57,3 +57,14 @@ console.log(_.find(userB, el=>el.id >2000));
 ### remove(array, [predicate])
 
 - **array에서 predicate를 만족하는(truthy) 모든 요소를 제거**한다.
+
+### throttle(callback, interval)
+
+- callback 을 interval만큼의 시간간격에서 실행되도록 설정한다.
+- scroll 설정과 함께 많이 사용된다.
+
+```js
+addEventListener('scroll', _.throttle(()=> {
+  console.log('scroll!')
+}, 300));
+```

@@ -474,6 +474,8 @@ async function logTodoTitle() {
 
 #### fetch API
 
+- 원격 API를 브라우저(클라이언트) 단에서 직접 호출하는 방식
+
 - GET : 디폴트로 GET 방식이 작동하기에 옵션 인자가 필요하지 않음
 
 ```js
@@ -483,6 +485,8 @@ fetch("https://jsonplaceholder.typicode.com/posts/1").then((response) =>
 ```
 
 - POST : 데이터 생성을 위해서 요청 전문을 포함할 수 있는 방식이 필요하다.
+  - req 보낼 때 JSON 타입으로 보내려면 : 객체에 대한 json stringify가 필요하다
+  - res 받을 때 .then(res => res.json()) 후 본문에 대한 정보를 JSON형식으로 담고 있는 promise를 반환한다.
 
 ```js
 fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -541,12 +545,12 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   - API 가 어떻게 사용되는가?
 - BOM
   - BOM 이란?
-  - Window 객체
+  - Window 객체 > Document 객체
 
 
 ### 2.1 DOM 이란?
 
-- HTML, XML 문서의 프로그래밍 interface
+- **HTML, XML 문서의 프로그래밍 interface**
 - 문서의 구조화된 표현 제공
   - nodes, objects 로 문서 표현
 - 프로그래밍 언어가 DOM 구조에 접근할 수 있는 방법 제공 
@@ -582,6 +586,29 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   - window.onload
   - window.dump
   - window.scrollTo
+
+### 2.3 BOM 이란?
+
+- **브라우저의 정보에 접근하거나, 브라우저의 기능들을 제어하기 위한 객체 모델**
+- **JS가 브라우저의 기능적인 요소들을 직접 제어하고, 관리**할 방법들을 제공한다.
+- BOM 모델의 객체들은 **전역 객체로 사용가능**하다.
+
+### 2.4 Window 객체
+
+- **window 객체의 메소드/프로퍼티는 window 접두사 생략 가능**
+- 브라우저의 창 크기 설정 가능
+- 새창 열기
+- 창 닫기
+
+#### Document 객체
+
+- 웹페이지 그 자체이며, HTML 요소에 접근하기 위해서는 Document 객체부터 시작해야 한다.
+- **Document 객체 내 메소드를 활용하여 DOM에 접근하는 것이다!**
+- Document 메소드
+  - HTML 요소 선택
+  - HTML 요소 생성
+  - HTML 이벤트 핸들러 추가
+  - HTML 객체 선택
 
 
 
