@@ -46,3 +46,22 @@ addEventListener('scroll', _.throttle(()=> {
     })
   }
 }, 300));
+
+
+// 메인의 그림들이 순차적으로 나타나게(fade-in) 하기 위해 사용하는 수단
+const fadeEls = document.querySelectorAll(".visual .fade-in");
+fadeEls.forEach((el, idx) => {
+  gsap.to(el, 1, {
+    delay : (idx+1) * 0.7,
+    opacity : 1
+  })
+});
+
+
+// swiper를 이용하여 동적인 메뉴 움직임 생성 : new Swiper(선택자, 옵션)
+new Swiper('.notice-line .swiper-container', {
+  slidesPerView : 1,
+  direction: 'vertical', // 수직 슬라이드
+  autoplay: true, // 자동 재생 여부
+  loop: true // 반복 재생 여부
+})

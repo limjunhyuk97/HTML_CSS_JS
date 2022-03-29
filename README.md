@@ -666,6 +666,32 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 ### 6.2 Babel
 
 - ES6+ 버전 이상의 코드를 하위 버전의 ES 코드로 변환시켜서 각 브라우저 들에서 동작할 수 있도록 하는 역할
+- 최신 문법 ES를 이전 문법 ES로 compiling 해주는 도구
+- preset과 plugin을 추가하지 않는다면 babel은 그자체로 아무것도 하지 않는다.
+  - preset-env를 통해서 컴파일을 위한 모든 plugin들을 얻게된다.
+  - preset-env를 통해서 컴파일 목적지가 될 브라우저를 선택할 수 있게 된다.
+  - plugin에서 원하는 브라우저만 지원가능하도록 선택할 수 있다.
+  - plugin에서 transformation을 제공한다.
+
+```bash
+# Babel 설치 / .babelrc에서의 플러그인 설정을 위한 preset-env
+# preset-env설정을 준비하여, 모든 es6(예시) 기능을 컴파일할 plugin을 얻게 됨
+$ npm i -D @babel/core @babel/preset-env
+
+# polyfill : 이전 버전의 브라우저에서 최신기능을 사용하기 위해 사용하는 코드
+# helper와 builtin에 대한 참조를 외부에서 끌어옴으로써, 전역을 오염시키지 않고 코드를 자동으로 polyfill하는 방식
+npm i -D @babel/plugin-transform-runtime
+```
+
+```js
+// .babelrc.js 
+module.exports = {
+  presets : ['@babel/preset-env'],
+  plugins : [
+    ['@babel/plugin-transform-runtime']
+  ]
+}
+```
 
 ### 6.3 트랜스 파일링
 
@@ -694,6 +720,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 ### 7.1 Network 탭
 
 - 네트워크 요청 내용을 실시간으로 확인 가능
+
 
 
 
@@ -732,7 +759,20 @@ var ex = function(array, cond){
 ex(arr, condition);
 ```
 
+
+
+
+
 ## 9. MVC 패턴
 
 - MVC 패턴이 무엇인가?
 - 옵저버 패턴이 무엇인가?
+
+
+
+
+
+## 10. ESM과 CommonJS
+
+- ESM : import / browser 환경
+- CommonJS : require / NodeJS 환경

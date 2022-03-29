@@ -386,23 +386,7 @@ addEventListener('scroll', _.throttle(()=> {
   right : 171px; 
 }
 
-.visual .cup2.image {
-  position: absolute;
-  bottom : 0;
-  right : 162px;
-}
-
-.visual .cup2.text {
-  position : absolute;
-  top : 321px;
-  right : 416px;
-}
-
-.visual .spoon {
-  position : absolute;
-  bottom : 0;
-  left : 275px;
-}
+/* ... */
 ```
 
 
@@ -452,5 +436,37 @@ addEventListener('scroll', _.throttle(()=> {
 
 
 
+## GSAP 사용하여 요소가 순차적으로 나타나게 설정
 
+```js
+// 기본적으로 CSS를 사용하여 투명 -> 불투명 하도록, 초기 CSS는 opacity : 0 설정
+
+// 메인의 그림들이 순차적으로 나타나게 하기 위해 사용하는 수단
+const fadeEls = document.querySelectorAll(".visual .fade-in");
+fadeEls.forEach((el, idx) => {
+  gsap.to(el, 1, {
+    delay : (idx+1) * 0.7,
+    opacity : 1
+  })
+});
+```
+
+
+
+
+
+## 높이 지정의 또다른 방식
+
+- inner class를 통해서 내부 요소들의 높이를 지정할 수 있다.
+
+
+```html
+<section class="notice">
+    <div class="notice-line">
+      <div class="bg-left"></div>
+      <div class="bg-right"></div>
+      <div class="inner"></div>
+    </div>
+  </section>
+```
 

@@ -46,6 +46,11 @@
   <!-- GSAP cdn 연결 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
+  <!-- Swiper cdn 연결 (JS/CSS 모두 필요하다.) / 6.8.4 버전으로 해야 요소 쌓임 현상이 일어나지 않음..! -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+
+
   <script defer src="./js/main.js"></script>
 </head>
 <body>
@@ -400,20 +405,66 @@
   </header>
 
 
-  <!-- section(visual) -->
+  <!-- section(VISUAL) : 그림 -->
   <section class="visual">
     <div class="inner">
-      <div class="title">
+      <div class="title fade-in">
         <img src="./images/visual_title.png" alt="STARBUCKS DELIGHTFUL START TO THE YEARS" />
         <a href="javasript:void(0)" class="btn btn--brown">자세히 보기</a>
       </div>
-      <img src="./images/visual_cup1.png" class="cup1 image" alt="new CUP1" />
-      <img src="./images/visual_cup1_text.png" class="cup1 text" alt="라떼" />
-      <img src="./images/visual_cup2.png" class="cup2 image" alt="new CUP2">
-      <img src="./images/visual_cup2_text.png" class="cup2 text" alt="모카" />
-      <img src="./images/visual_spoon.png" class="spoon image" alt="Spooon" />
+      <div class="fade-in">
+        <img src="./images/visual_cup1.png" class="cup1 image" alt="new CUP1" />
+        <img src="./images/visual_cup1_text.png" class="cup1 text" alt="라떼" />
+      </div>
+      <div class="fade-in">
+        <img src="./images/visual_cup2.png" class="cup2 image" alt="new CUP2">
+        <img src="./images/visual_cup2_text.png" class="cup2 text" alt="모카" />  
+      </div>      
+      <div class="fade-in">
+        <img src="./images/visual_spoon.png" class="spoon image" alt="Spooon" />
+      </div>
     </div>
   </section>
+
+
+  <!--NOTICE-->
+  <section class="notice">
+    <!--NOTICE LINE-->
+    <div class="notice-line">
+      <div class="bg-left"></div>
+      <div class="bg-right"></div>
+      <div class="inner">
+        <div class="inner__left">
+          <h2>공지사항</h2>
+          <!-- Swiper Container -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">크리스마스 & 연말연시 스타벅스 매장 영업시간 변경 안내</a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">[당첨자 발표] 2021 스타벅스 플래너 영수증 이벤트</a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">스타벅스커피 코리아 애플리케이션 버전 업데이트 안내</a>
+              </div>
+              <div class="swiper-slide">
+                <a href="javascript:void(0)">[당첨자 발표] 뉴이어 전자영수증 이벤트</a>
+              </div>
+            </div>
+          </div>
+          <a href="javascript:void(0)" class="notice-line__more">
+            <span class="material-icons">add_circle</span>
+          </a>
+        </div>
+        <div class="inner__right">
+          <h2>스타벅스 프로모션</h2>
+          <div class="toggle-promotion open">
+            <div class="material-icons">upload</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 </body>
 </html>

@@ -2,6 +2,19 @@
 
 
 
+
+
+## 00. 시작하기
+
+```bash
+$ npx create-react-app File명
+# react 시작 위한 설정 생성
+```
+
+
+
+
+
 ## 01. React Concept
 
 ### Angular vs React vs Vue
@@ -55,6 +68,8 @@
 
 
 
+
+
 ## 02. Core modules
 
 ```js
@@ -67,7 +82,12 @@ import React from 'react'
 
 
 
+
+
 ## 03. React Component 생성
+
+- **class component**
+- **function component**
 
 ### Hook 이전
 
@@ -91,4 +111,6 @@ class ClassComponent extends React.Component {
   }
 }
 ```
+
+
 
