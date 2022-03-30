@@ -1,0 +1,251 @@
+<!-- npx serve로 테스트 진행 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Example</title>
+</head>
+<body>
+
+  <div id="root">
+
+  </div>
+
+
+  <!-- CDN for React -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- React.createElement() -->
+  <script type="text/javascript">
+
+    console.log(React);
+    console.log(ReactDOM);
+
+    // React.createElement(
+    //   type, // 태그 이름 문자열 | React Component | React.Fragment
+    //   [props], // 리액트 컴포넌트에 넣어주는 데이터 객체
+    //   [ ... children] // 자식으로 넣어줄 요소들
+    // )
+    
+    // 1. (태그 이름 문자열) type : 상위 태그 아래에 => 태그 생성
+    // <h1>type이 "태그 이름 문자열" 입니다.</h1>
+
+    ReactDOM.render(
+      React.createElement('h1', null, `type이 "태그 이름 문자열" 입니다.`),
+      document.querySelector("#root")
+    )
+
+    // 2. (React Component) type : 상위태그 아래에 => React Component 생성 - 태그 생성
+    // <Component></Component>  =>  <p>type이 "태그 이름 문자열" 입니다.</p>
+
+    const Component = () => React.createElement('p', null, `type이 "React Component 입니다."`)
+    ReactDOM.render(
+      React.createElement(Component, null, "엥?"),
+      document.querySelector("#root")
+    )
+
+    // 3. (React.Fragment) type : 상위 태그 아래에 => 요소를 그냥 바로 넣을 수 있다.
+    // type이 "태그 이름 문자열" 입니다. 
+    ReactDOM.render(
+      React.createElement(
+        React.Fragment,
+        null,
+        `type이 "React Fragment 입니다."`
+      ),
+      document.querySelector("#root")
+    )
+
+    // 4. 구조가 복잡한 상태의 요소를 만드려 하는 경우 : createElement로 element를 생성하는 데에는 한계가 존재한다.
+    ReactDOM.render(
+      React.createElement(
+        "div", null, React.createElement("div", null, React.createElement("h1", null, "주제"))),
+      document.querySelector("#root")
+    )
+
+  </script>
+
+
+  <!-- JSX -->
+  <script type="text/babel">
+    // Babel을 사용하여 "우리가 작성한 코드" => "순수하게 실행가능한 js 코드"로 변경할 수 있다.
+    // 즉, JSX로 작성한 코드를 순수 JS로 Babel이 컴파일해준다.
+    // 즉, type에 "태그이름 문자열, React component, React fragment"를 넣지 않고 JSX문법으로 작성된 코드를 넣을 수 있다.
+    ReactDOM.render(
+      <>
+      <div>
+        <div>
+          <h1>{2+3}</h1>
+          <ul>
+            <li>React</li>
+            <li>Vue</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h1>주제</h1>
+          <ul>
+            <li>React</li>
+            <li>Vue</li>
+          </ul>
+        </div>
+      </div>
+      </>
+      ,
+      document.querySelector("#root")
+    )
+  </script>
+
+
+  <!-- EventHandler -->
+  <script type="text/babel">
+
+    function Component2() {
+      return (
+        <div>
+          <button onClick = { console.log("clicked") }>
+            button!
+          </button>
+        </div>
+      );
+    }
+
+    class Component3 extends React.Component {
+
+      state = {
+        count : 0,
+      };
+      
+      constructor(props) {
+        super(props);
+        // 객체 메서드를 콜백으로 전달할 때 this 정보가 사라지는 문제에 대한 해결
+        // 브라우저 환경에서 인수로 전달받은 함수를 호출할 때 window를 this로 할당한다.
+        // 그러므로 this가 context로 고정된 함수를 반환하도록 bind를 사용하는 것이 좋다.
+        // this.click = this.click.bind(this);
+      }
+
+      render() {
+        return (
+        <div>
+          <p> {this.state.count} </p>
+          
+          { /* props로 이벤트 캐치하기 (내부 정의) */ }
+          <button 
+            onMouseEnter = { () => {
+              console.log("mouseOver!"); 
+              this.setState(state => ({
+              // ...state를 통해서 state 전개 가능하다
+              ... state,
+              count : state.count + 1,
+              }));
+            }}
+          >
+            mouseOver!
+          </button>
+
+          { /* props로 이벤트 캐치하기 (외부 함수 정의) */ }
+          <button
+            onClick = {this.click}>
+            click!
+          </button>
+        </div>
+      );
+      }
+
+      // 또는 click에서의 this가 렉시컬 스코프를 따르도록 (자신이 선언된 메소드의 this를 따르도록)
+      click = () => { 
+        console.log("clicked!"); 
+        this.setState(state => ({
+          // ...state를 통해서 state 전개 가능하다
+          ... state,
+          count : state.count + 1,
+        }));
+      }
+
+    }
+
+    ReactDOM.render(<Component3 />, document.querySelector("#root"));
+
+  </script>
+
+
+  <!-- Hook & LifeCycle -->
+  <script type="text/babel">
+
+    class App extends React.Component {
+
+      state = {
+        age : 26
+      };
+
+      constructor(props) {
+        super(props);
+        console.log("constructor ", props);
+      }
+
+      // Render
+      render() {
+        console.log("render");
+        
+        // Mount의 과정
+        return (
+          <div>
+            <h2>
+              Hello {this.props.name} - {this.state.age}
+            </h2>
+          </div>
+        );
+      };
+
+      // Mount : ComponentWillMount
+      componentWillMount() {
+        console.log("Component Will MOUNT");
+      };
+
+      // Mount : ComponentDidMount
+      componentDidMount() {
+        console.log("Component Did MOUNT");
+
+        setInterval(()=>{
+          console.log("setInterval")
+          this.setState(state => ({
+            ... state,
+            age : state.age + 1
+          }));
+        }, 1000)
+      };
+
+      // Update Props : componentWillReceiveProps
+      componentWillReceiveProps() {
+
+      }
+
+      // Update Props+State : shouldComponentWillUpdate
+      shouldComponentWillUpdate() {
+
+      }
+
+      // Update Props+State : componentWillUpdate
+      componentWillUpdate() {
+
+      }
+
+      // Update Props+State : componentDidUpdate
+      componentDidUpdate() {
+
+      }
+      
+    }
+
+    ReactDOM.render(<App name ="JUN" />, document.querySelector("#root"));
+
+  </script>
+
+</body>
+</html>

@@ -667,6 +667,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 
 - ES6+ 버전 이상의 코드를 하위 버전의 ES 코드로 변환시켜서 각 브라우저 들에서 동작할 수 있도록 하는 역할
 - 최신 문법 ES를 이전 문법 ES로 compiling 해주는 도구
+- babel은 webpack/parcel과 같은 buildsystem과 함께 사용된다.
 - preset과 plugin을 추가하지 않는다면 babel은 그자체로 아무것도 하지 않는다.
   - preset-env를 통해서 컴파일을 위한 모든 plugin들을 얻게된다.
   - preset-env를 통해서 컴파일 목적지가 될 브라우저를 선택할 수 있게 된다.
@@ -697,7 +698,7 @@ module.exports = {
 
 - 특정 언어로 작성된 소스코드를 다른 소스코드로 변환하는 작업을 말한다.
 
-### 6.4 Webpack
+### 6.4 [Webpack](./Front/Bundler/README.md)
 
 - 오픈소스 자바스크립트 모듈 번들러이다.
 - 의존성 있는 모듈들을 취하여 해당 모듈을 대표하는 정적 자산들을 생성한다.
