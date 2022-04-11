@@ -107,7 +107,9 @@ shutdown.bash
 ### 2.1 프로젝트 생성
 
 - File > New > Spring Starter Project : Spring Boot Project 생성
+  - Spring Boot 기반 애플리케이션 개발 시 사용하는 프로젝트
 - File > New > Spring Legacy Project : Spring Project 생성 
+  - Spring Framework 기반 프로젝트
 
 ### 2.2 Server 추가 및 실행
 
