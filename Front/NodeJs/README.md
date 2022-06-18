@@ -1,9 +1,9 @@
 # Node.js
 
-
 ## Node.js 개요
 
 - **Chrome V8 Javascript 엔진으로 빌드된 JavaScript 런타임(Java Script 동작환경)**
+
   - 로컬 런타임(동작환경) 제어
   - 브라우저 런타임(동작환경) 제어
   - js 를 사용한 여러 패키지를 이용가능한 환경 제공
@@ -11,6 +11,7 @@
   - 서버 애플리케이션을 실행시키는데 많이 사용된다.
 
 - **nvm : nodejs 버전을 변경할 수 있도록 해주는 프로그램**
+
   - (mac 기준) brew install nvm : nvm 설치
   - node : node.js 환경 실행 가능
   - .exit : node.js 환경 종료
@@ -23,6 +24,7 @@
   - nvm --help : nvm 명령들 확인 가능
 
 - **npm(node package manager) : 여러 패키지(기능/모듈)들을 설치 및 관리해주는 매니저**
+
   - npm init -y : package-json 기본값을 세팅한다.
   - npm install \<package\>@\<version\> : 특정 패키지를 설치한다. / 제일 최신 버전의 package로 update 한다.
   - node package를 설치 : node_modules 디렉토리에 모듈이 설치되고, package-json에 dependency가 추가된다.
@@ -35,6 +37,7 @@
   - npm info \<package\> : package 에 대한 설명과 최신 버전 정보 확인
 
 - **nodejs package 설치 위치**
+
   - 전역에 설치된 package : 의존성 라이브러리를 전체적으로 관리함
   - 특정 프로젝트에만 설치된 package : 특정 프로젝트 내에서만 관리됨
 
@@ -49,7 +52,6 @@ npx nodemon app.js
 ```
 
 - nodejs는 파일 하나를 하나의 모듈로 간주한다.
-
 
 ## Node 특성
 
@@ -97,16 +99,14 @@ npx nodemon app.js
 - I/O 작업을 처리할 때에는 node가 멀티 프로세싱을 지원한다.
 - node는 많은 I/O를 감당할 수 있다 = 개수는 많지만 크기가 작은 데이터의 송수신을 잘 감당할 수 있다 = 채팅, 주식차트 등..
 
-
 ## package.json
-  
+
 - [참고](https://edu.goorm.io/learn/lecture/557/%ED%95%9C-%EB%88%88%EC%97%90-%EB%81%9D%EB%82%B4%EB%8A%94-node-js/lesson/174371/package-json)
 - 프로젝트 명세 (이름, 버전, 홈페이지, 저자 등..) 에 대한 정보를 갖고 있다.
 - 현재 프로젝트가 의존하고 있는 확장 모듈에 대한 정보를 갖고 있다.
 - 협업을 위해서 각자의 컴퓨터에 같은 패키지를 설치하는 과정에서 사용 가능하다.
 - **version 정보를 저장할 때 version range를 사용한다.**
   - npm 버전이 다른 경우, 서로 다른 node_modules 트리가 생성될 수 있다.
-
 
 ## package-lock.json
 
@@ -116,12 +116,10 @@ npx nodemon app.js
 - npm install 을 사용하면 자동으로 생성된다.
 - package-lock.json 이 있는 경우, 이를 바탕으로 npm install 이 진행된다.
 
-
 ## node_modules
 
 - package.json에 있는 모듈 뿐만 아니라, package.json에 있는 모듈들이 의존하고 있는 모듈 전부에 대한 정보를 갖고 있다.
-- 현재 프로젝트에 설치되어 있는 특정 모듈의 버전에 대한 정보를 확인할 수 있다. 
-
+- 현재 프로젝트에 설치되어 있는 특정 모듈의 버전에 대한 정보를 확인할 수 있다.
 
 ## package 실행
 
@@ -167,7 +165,6 @@ $ npx parcel index.html
 
 - **Shell 입장에서는 \<package 명\> 이라는 환경변수는 존재하지 않으므로 당연히 실행이 안된다.**
 
-
 ## 유의적 버전 (Semantic Versioning = SemVer)
 
 - 특정 시점의 상태에 대한 식별 가능한 유일한 이름을 지정하는 것.
@@ -177,9 +174,214 @@ $ npx parcel index.html
   - Patch : 기존 버전과 호환O. 버그, 오타 등이 수정된 버전
   - ^ : Major 버전 안에서 가장 최신 버전으로 업데이트 가능하다는 의미 (npm update \<package\> 시 최신버전으로 업데이트 됨)
 
-
 ## git push 시 유의 사항
 
 - 따로 버전관리 필요가 없는 폴더들은 git에 push 하지 않아도 된다. (예: node_modules, dist, .cache 등 ..)
 
+## 내장 모듈
 
+### url
+
+- **인터넷 주소를 쉽게 조작**하도록 돕는 **노드 내장 모듈**이다.
+- node에서 사용하는 url 구분 방식과, WHATWG에서 사용하는 url 구분 방식 두가지가 존재한다.
+  - 아래 그림의 윗부분 구분 방식 : node에서 사용하는 url 구분 방식
+  - 아래 그림의 아랫부분 구분 방식 : WHATWG에서 사용하는 url 구분 방식
+
+<p align="center"><img width="781" alt="url" src="https://user-images.githubusercontent.com/59442344/157380862-1d0f8c06-6222-48f7-a534-c31783d403da.png"></p>
+
+- URL / url.parse(), url.format 으로 url 주소 분해, 분석
+- **url.parse() 방식을 통해서만 host 부분 없이 pathname 부분만 오는 주소의 경우를 처리 가능**
+
+```js
+const url = require("url");
+
+// WHATWG 방식의 url 분석을 지원한다.
+// 구조 분해 할당으로 url 모듈 내의 URL 생성자를 가져온다.
+// URL 생성자에 url을 넣으면 WHATWG 형식으로 주소를 분해한 결과를 보여준다.
+const { URL } = url;
+const myURL = new URL("https://www.omdbapi.com/?apikey=7035c60c&s=frozen");
+console.log("new URL(): ", myURL);
+console.log("url.format(): ", url.format(myURL));
+console.log("======================================");
+console.log();
+
+// 기존 node 방식의 url 분석을 지원한다.
+// url.parse : node 방식으로 주소를 분해한 결과를 보여준다.
+// url.format : url.parse()로 분해된 주소를 다시 합쳐준다.
+const parsedURL = url.parse(
+  "https://www.omdbapi.com/?apikey=7035c60c&s=frozen"
+);
+console.log("url.parse(): ", parsedURL);
+console.log("url.format(): ", url.format(parsedURL));
+```
+
+#### search 부분의 query string 다루기
+
+- require('url')을 통하여
+
+  - **URL 객체를 생성하여 WHATWG 형식으로 주소를 분해**한 경우
+  - **url.parse() 메소드를 사용하여 node 형식으로 주소를 분해**한 경우
+  - 두 경우에서 query string을 다루는 방식이 다르다.
+
+- **URL 객체 생성 : URL객체.searchParams 사용**
+
+  - URL객체.searchParams
+  - URL객체.searchParams.getAll(key정보)
+  - URL객체.searchParams.get(key정보)
+  - URL객체.searchParams.has(key정보)
+  - URL객체.searchParams.keys()
+  - URL객체.searchParams.values(key정보)
+  - URL객체.searchParams.append(key정보, value정보)
+  - URL객체.searchParams.set(key정보, value정보)
+  - URL객체.searchParams.delete(key정보)
+  - URL객체.searchParams.toString()
+
+- **url.parse() 메소드 사용 : querystring 모듈 require**
+  - querystring 모듈을 불러온 뒤
+  - querystring.parse(url.parse(url 주소).query) : query 부분의 key, value 구성을 나눠 보여줌
+  - querystring.stringify(url.parse(url 주소).query) : query 부분을 합친다.
+
+```js
+const url = require("url");
+const querystring = require("querystring");
+
+const parsedURL = url.parse(
+  "https://www.omdbapi.com/?apikey=7035c60c&s=frozen"
+);
+const query = querystring.parse(parsedURL.query);
+console.log(query);
+console.log(querystring.stringify(query));
+```
+
+### fs
+
+- **파일 시스템에 접근**하게 도와주는 **노드 내장 모듈**이다.
+- 파일 생성, 삭제, 읽기, 쓰기 를 위한 기능 제공
+
+#### promise 기반의 fs 모듈 사용
+
+```js
+const fs = require("fs").promises;
+
+fs.writeFile("./test.txt", "testing now\n")
+  .then(() => fs.readFile("./test.txt"))
+  .catch((err) => console.error(err))
+  .then((data) => console.log(data.toString()))
+  .catch((err) => console.error(err));
+```
+
+#### fs 모듈의 동기적 / 비동기적 사용
+
+- 동기적 사용을 위한 메서드 뒤에는 'Sync'가 붙음
+- 동기적으로 처리 시에는 처리 순서가 보장되지만, 백그라운드에서의 작업 처리를 기다리는 시간이 발생하여 비효율성이 생길 수 있다.
+
+```js
+const fs = require("fs");
+const fsA = require("fs").promises;
+
+// 비동기적 사용 (1) 순서유지 + callback 지옥
+fs.readFile("./test.txt", (err, data) => {
+  if (err) throw err;
+  console.log("1 " + data);
+  fs.readFile("./test.txt", (err, data) => {
+    if (err) throw err;
+    console.log("2 " + data.toString());
+    fs.readFile("./test.txt", (err, data) => {
+      if (err) throw err;
+      console.log("3 " + data);
+    });
+  });
+});
+
+// 비동기적 사용 (1) 순서무시 + callback
+console.log("hello");
+fs.readFile("./test.txt", (err, data) => {
+  if (err) throw err;
+  console.log("1)", data.toString());
+});
+fs.readFile("./test.txt", (err, data) => {
+  if (err) throw err;
+  console.log("2)", data.toString());
+});
+fs.readFile("./test.txt", (err, data) => {
+  if (err) throw err;
+  console.log("3)", data.toString());
+});
+console.log("Bye");
+
+// 비동기적 사용 (2) 순서무시 + async
+console.log("hello");
+(async () => {
+  try {
+    fsA.readFile("./test.txt").then((data) => {
+      console.log("1, " + data);
+    });
+    fsA.readFile("./test.txt").then((data) => {
+      console.log("2, " + data);
+    });
+    fsA.readFile("./test.txt").then((data) => {
+      console.log("3, " + data);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+})();
+console.log("Bye");
+
+// 비동기적 사용 (2) 순서무시 + async
+console.log("hello");
+(async () => {
+  try {
+    await fsA.readFile("./test.txt").then((data) => {
+      console.log("1, " + data);
+    });
+    await fsA.readFile("./test.txt").then((data) => {
+      console.log("2, " + data);
+    });
+    await fsA.readFile("./test.txt").then((data) => {
+      console.log("3, " + data);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+})();
+console.log("Bye");
+
+// 비동기적 사용 (3) 순서무시 + promise
+console.log("hello");
+fsA
+  .readFile("./test.txt")
+  .then((data) => {
+    console.log("1, " + data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+fsA
+  .readFile("./test.txt")
+  .then((data) => {
+    console.log("2, " + data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+fsA
+  .readFile("./test.txt")
+  .then((data) => {
+    console.log("3, " + data);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+console.log("Bye");
+
+// 동기적 사용
+let data = fs.readFileSync("./test.txt");
+console.log("1> " + data);
+data = fs.readFileSync("./test.txt");
+console.log("2> " + data);
+data = fs.readFileSync("./test.txt");
+console.log("3> " + data);
+```
+
+### 버퍼와 스트림

@@ -1,8 +1,6 @@
-# 웹 서비스 만들기
+# 정리
 
-
-
-
+## [Notion](https://www.notion.so/Daily-5a87769073b2456fb920ce25fa34a1fd)
 
 ## 공부할 것
 
@@ -24,10 +22,6 @@
 
 ### 9. [MVC 패턴](#9-mvc-패턴)
 
-
-
-
-
 ## 1. Client - Server - DB 관계
 
 - 브라우저 렌더링 과정이란?
@@ -46,7 +40,6 @@
   - AJAX?
 - 미들웨어가 무엇인가?
 - CSR SSR 이란 무엇인가?
-
 
 ### 1.1 동기와 비동기
 
@@ -93,7 +86,6 @@ console.log(answer);
   - 하나의 프로세스 내의 쓰레드들은 프로세스에게 할당된 메모리 자원 등을 공유한다.
   - 하나의 프로세스 내의 쓰레드들은 각각의 스택과 레지스터가 존재한다.
 
-
 #### [이벤트 루프(Event Loop)](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
 
 - JS 엔진 : JS 코드를 시시각각 주는대로 받아 처리하는 실행기
@@ -117,8 +109,12 @@ console.log(answer);
 ```js
 var res = {};
 
-function foo(a){ res.a = a; }
-function boo(b){ res.b = b; }
+function foo(a) {
+  res.a = a;
+}
+function boo(b) {
+  res.b = b;
+}
 
 ajax("http://some.url.1", foo);
 ajax("http://some.url.2", boo);
@@ -153,12 +149,12 @@ ajax("https://some.url2", reponse);
 
 ```js
 // 코드의 내용들이 순차적으로 실행된다.
-const btn = document.querySelector('button');
-btn.addEventListener('click', () => {
-  alert('You clicked me!');
+const btn = document.querySelector("button");
+btn.addEventListener("click", () => {
+  alert("You clicked me!");
 
-  let pElem = document.createElement('p');
-  pElem.textContent = 'This is a newly-added paragraph.';
+  let pElem = document.createElement("p");
+  pElem.textContent = "This is a newly-added paragraph.";
   document.body.appendChild(pElem);
 });
 ```
@@ -166,7 +162,7 @@ btn.addEventListener('click', () => {
 ```js
 // myImage.png 파일을 아직 가져오지 않았기 때문에 blob() 실행에 문제가 발생할 수 있다.
 // 동기적 코드에서 문제가 발생가능한 것.
-let response = fetch('myImage.png');
+let response = fetch("myImage.png");
 let blob = response.blob();
 ```
 
@@ -182,7 +178,6 @@ let blob = response.blob();
   - 디스플레이를 VR 헤드셋으로 브로드캐스팅하기 등..
 - **( 어떻게 사용? ) callback, promise-style**
 
-
 #### callback
 
 - 함수의 실행순서를 제어할 수 있다.
@@ -192,15 +187,15 @@ let blob = response.blob();
 - (예1)
 
 ```js
-// callback : callback을 특정 순서로 집어넣어서, 실행순서를 보장하는 방식 
+// callback : callback을 특정 순서로 집어넣어서, 실행순서를 보장하는 방식
 function loadAsset(url, type, callback) {
   // url에서 리소스 가져옴
   let xhr = new XMLHttpRequest();
-  xhr.open('GET', url);
+  xhr.open("GET", url);
   xhr.responseType = type;
 
   // onload : callback 함수로 넘어가기 전에 리소스 다운로드를 완료하기 위해 XHR 요청이 진행되는 동안 대기
-  xhr.onload = function() {
+  xhr.onload = function () {
     callback(xhr.response);
   };
 
@@ -211,29 +206,28 @@ function loadAsset(url, type, callback) {
 function displayImage(blob) {
   let objectURL = URL.createObjectURL(blob);
 
-  let image = document.createElement('img');
+  let image = document.createElement("img");
   image.src = objectURL;
   document.body.appendChild(image);
 }
 
-loadAsset('coffee.jpg', 'blob', displayImage);
+loadAsset("coffee.jpg", "blob", displayImage);
 ```
 
 - (예2)
 
 ```js
 const printString = (string) => {
-  setTimeout(()=>{
+  setTimeout(() => {
     console.log(string);
-  },
-  Math.floor(Math.random() * 100) + 1);
-}
+  }, Math.floor(Math.random() * 100) + 1);
+};
 
 const printAll = () => {
   printString("A");
   printString("B");
   printString("C");
-}
+};
 
 printAll();
 ```
@@ -264,23 +258,27 @@ printAll();
 
 ```js
 // fetch API
-fetch('products.json').then(function(response) {
-  return response.json();
-}).then(function(json) {
-  products = json;
-  initialize();
-}).catch(function(err) {
-  console.log('Fetch problem: ' + err.message);
-}).finally(()=>{
-  console.log('Promise end!');
-});
+fetch("products.json")
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (json) {
+    products = json;
+    initialize();
+  })
+  .catch(function (err) {
+    console.log("Fetch problem: " + err.message);
+  })
+  .finally(() => {
+    console.log("Promise end!");
+  });
 ```
 
 - (예2) new Promise() .then().catch()
 
 ```js
 function getData() {
-  return new Promise(function(resolve, reject){
+  return new Promise(function (resolve, reject) {
     var a = 1000;
     // 성공 시에 promise 객체 반환
     resolve(a);
@@ -289,11 +287,13 @@ function getData() {
 }
 
 // then으로 resolve 상태로 진행됨
-getData().then(function(data){
-  console.log(data);
-}).catch(function(data){
-  console.log(data);
-});
+getData()
+  .then(function (data) {
+    console.log(data);
+  })
+  .catch(function (data) {
+    console.log(data);
+  });
 ```
 
 - (예3) AJAX 통신 예제
@@ -301,8 +301,8 @@ getData().then(function(data){
 ```js
 // 비동기적 실행이 resolve, reject를 promise 객체로 전달할 수 있음
 function getData() {
-  return new Promise(function(resolve, reject) {
-    $.get('url 주소/products/1', function(response) {
+  return new Promise(function (resolve, reject) {
+    $.get("url 주소/products/1", function (response) {
       if (response) {
         resolve(response);
       }
@@ -312,11 +312,13 @@ function getData() {
 }
 
 // 위 $.get() 호출 결과에 따라 'response' 또는 'Error' 출력
-getData().then(function(data) {
-  console.log(data); // response 값 출력
-}).catch(function(err) {
-  console.error(err); // Error 출력
-});
+getData()
+  .then(function (data) {
+    console.log(data); // response 값 출력
+  })
+  .catch(function (err) {
+    console.error(err); // Error 출력
+  });
 ```
 
 - **Promise style의 실행흐름**
@@ -336,10 +338,9 @@ getData().then(function(data) {
 
 ```js
 async function 함수명() {
-  try{
+  try {
     await 비동기_처리_메소드명();
-  }
-  catch(error){
+  } catch (error) {
     // error 처리
   }
 }
@@ -349,16 +350,16 @@ async function 함수명() {
 
 ```js
 // fetchUser 가 서버로부터 데이터를 가져오는 HTTP 통신코드라고 가정한다면, callback을 사용하여 실행순서를 보장해주어야 함
-function logName(){
-  let user = fetchUser(url, function(){
-    if(user.id === userID) console.log(user.name);
+function logName() {
+  let user = fetchUser(url, function () {
+    if (user.id === userID) console.log(user.name);
   });
 }
 
 // async, await를 사용하여 간결하게 표현가능하다.
 async function logName() {
   let user = await fetchUser(url);
-  if(user.id === 1) console.log(user.name);
+  if (user.id === 1) console.log(user.name);
 }
 ```
 
@@ -379,7 +380,7 @@ function fetchTodo() {
   })
 }
 
-// try-'catch'로 reject를 잡아낸다. 
+// try-'catch'로 reject를 잡아낸다.
 async function logTodoTitle() {
   try{
     var user = await fetchUser() {
@@ -423,7 +424,6 @@ async function logTodoTitle() {
   - **js가 기본적으로 single thread이기 때문에 발생**한다.
 - non-blocking : 요청을 날린 쪽이 결과가 나올 때까지 다른 일을 수행할 수 있는 상태
 
-
 ### 1.2 미들웨어
 
 - **양쪽을 연결하여 데이터를 주고받을 수 있도록 중간에세 매개 역할을 하는 소프트웨어이다.**
@@ -449,7 +449,6 @@ async function logTodoTitle() {
 <p align="center"><img src="https://user-images.githubusercontent.com/59442344/149724402-f204a5f8-83bc-438b-896d-09f39505ee10.png" width="60%" height="25%" ></p>
 
 <p align="center"><img src="https://user-images.githubusercontent.com/59442344/149727419-1148da6a-bdcb-4a33-921e-1728b83eee50.jpeg" width="30%" height="35%"></p>
-
 
 ### 1.3 API
 
@@ -502,8 +501,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 }).then((response) => console.log(response));
 ```
 
-
-### 1.4 CSR SSR 
+### 1.4 CSR SSR
 
 #### 렌더링
 
@@ -533,10 +531,6 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 3. JS를 다운로드 받음 ( + React source code가 실행되기 시작)
 4. source code가 실행된 후에야 유저가 **상호작용 가능**
 
-
-
-
-
 ## 2. DOM / BOM
 
 - [DOM](https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction)
@@ -547,13 +541,12 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   - BOM 이란?
   - Window 객체 > Document 객체
 
-
 ### 2.1 DOM 이란?
 
 - **HTML, XML 문서의 프로그래밍 interface**
 - 문서의 구조화된 표현 제공
   - nodes, objects 로 문서 표현
-- 프로그래밍 언어가 DOM 구조에 접근할 수 있는 방법 제공 
+- 프로그래밍 언어가 DOM 구조에 접근할 수 있는 방법 제공
   - 즉, 문서의 요소에 접근할 수 있는 방법 제공
   - 즉, 문서의 구조, 스타일, 내용을 변경할 수 있는 방법 제공
 - 웹 페이지는 문서이다.
@@ -561,7 +554,6 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   - 즉, DOM 은 웹 페이지의 객체 지향적 표현이다.
 - W3C DOM, WHATWG DOM 은 대부분의 브라우저들이 DOM을 표현하는 기준이다.
 - DOM 의 구현은 어떤 언어로도 가능하다. (DOM은 프로그래밍 언어와 독립적으로 디자인 되었기 때문)
-
 
 ### 2.2 DOM 에 접근하는 방법?
 
@@ -610,11 +602,7 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   - HTML 이벤트 핸들러 추가
   - HTML 객체 선택
 
-
-
-
-
-## 3. HTML / CSS / JS 
+## 3. HTML / CSS / JS
 
 - 웹페이지의 레이아웃을 CSS로 어떻게 잡는가?
 - History API vs Anchor tag
@@ -628,28 +616,16 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
 - 그러므로, **SPA 를 구현하기 위해서는 a 태그를 사용해서는 안된다.**
 - History API 를 사용하면, reload 발생하지 않고, 서버에게 새로 요청하지 않는다.
 
-
-
-
-
 ## 4. SPA / MPA
 
 - SPA가 무엇인가?
 - SPA를 어떻게 구현하는가?
-
-
-
-
 
 ## 5. Express
 
 - Express 로 서버 구축하는 방법?
 - Express 사용 전과 후의 서버 구축 방법 차이?
 - Express 에서 사용하는 라이브러리의 종류와 기능
-
-
-
-
 
 ## 6. Webpack과 Babel
 
@@ -685,13 +661,11 @@ npm i -D @babel/plugin-transform-runtime
 ```
 
 ```js
-// .babelrc.js 
+// .babelrc.js
 module.exports = {
-  presets : ['@babel/preset-env'],
-  plugins : [
-    ['@babel/plugin-transform-runtime']
-  ]
-}
+  presets: ["@babel/preset-env"],
+  plugins: [["@babel/plugin-transform-runtime"]],
+};
 ```
 
 ### 6.3 트랜스 파일링
@@ -709,11 +683,7 @@ module.exports = {
 - 주로 JS를 위해 번들링을 수행하지만, 플러그인을 통해서 HTML, CSS, 이미지까지 압축하거나 최적화를 수행
   - 예) parcel-bundler
 
-
-
-
-
-## 7. 개발자도구 
+## 7. 개발자도구
 
 - 개발자도구 란?
 - 개발자도구 에서 사용할 수 있는 기능은?
@@ -721,10 +691,6 @@ module.exports = {
 ### 7.1 Network 탭
 
 - 네트워크 요청 내용을 실시간으로 확인 가능
-
-
-
-
 
 ## 8. 프로그래밍 패러다임
 
@@ -747,31 +713,25 @@ module.exports = {
 ```js
 // 다음은 순수함수가 아니다 : 인자로 전달되지 않는 condition 변수를 사용함
 var arr = [1, 2, 3, 4, 5];
-var condition = function(x) { return x % 2 === 0; }
-var ex = function(array) {
+var condition = function (x) {
+  return x % 2 === 0;
+};
+var ex = function (array) {
   return array.filter(condition);
 };
 ex(arr); // [2, 4]
 
 // 순수함수로 변경 : 인자로 전달받은 것만 사용함
-var ex = function(array, cond){
+var ex = function (array, cond) {
   return array.filter(cond);
-}
+};
 ex(arr, condition);
 ```
-
-
-
-
 
 ## 9. MVC 패턴
 
 - MVC 패턴이 무엇인가?
 - 옵저버 패턴이 무엇인가?
-
-
-
-
 
 ## 10. ESM과 CommonJS
 
