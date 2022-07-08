@@ -53,6 +53,17 @@ npx nodemon app.js
 
 - nodejs는 파일 하나를 하나의 모듈로 간주한다.
 
+- **yarn** : 페이스북에서 만든 JS 패키지 매니저이다.
+  - 패키지 설치속도가 빠르다.
+  - 패키지 설치과정에서 code running을 방지해서 보안상으로 안전하다.
+  - 버전의 range가 아닌 정확한 버전을 명시한 yarn.lock을 만든다.
+  - 사용
+    - yarn init
+    - yarn add \<package\>
+    - yarn add \<package\> -D
+    - yarn remove \<package\>
+    - yarn upgrade
+
 ## Node 특성
 
 - JS Runtime, 이벤트 기반, non-blocking 처리, 싱글스레드
