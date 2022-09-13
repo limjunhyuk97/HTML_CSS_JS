@@ -1,6 +1,15 @@
 # 정리
 
-## [Notion](https://www.notion.so/Daily-5a87769073b2456fb920ce25fa34a1fd)
+## Notion
+
+- 요즘에는 학습정리 노션에다 하고 있슴다.
+
+### [Svelte](https://www.notion.so/Daily-5a87769073b2456fb920ce25fa34a1fd)
+### [React](https://fantastic-feverfew-7a2.notion.site/React-9fe7171682ef438ebf1828927442315c)
+### [JS](https://fantastic-feverfew-7a2.notion.site/JS-188d35fe9a8447bf84577e29a4bba39f)
+### [TS](https://fantastic-feverfew-7a2.notion.site/TS-783ec95b437f404797a47da17898cf0c)
+### [FE스터디](https://fantastic-feverfew-7a2.notion.site/NOPE-0a2cd3d0dfee436788c81eeac0aee308)
+### [키워드](https://fantastic-feverfew-7a2.notion.site/a34c9b8ac9da4aa7ad18546a74592f42)
 
 ## 공부할 것
 
