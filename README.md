@@ -2,7 +2,7 @@
 
 ## Notion
 
-- 요즘에는 학습정리 노션에다 하고 있슴다.
+요즘에는 학습정리 노션에다 하고 있슴다.
 
 ### [Svelte](https://www.notion.so/Daily-5a87769073b2456fb920ce25fa34a1fd)
 ### [React](https://fantastic-feverfew-7a2.notion.site/React-9fe7171682ef438ebf1828927442315c)
